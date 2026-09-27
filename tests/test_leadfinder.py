@@ -437,7 +437,8 @@ class TestEvaluate(unittest.TestCase):
         by_id = {c.id: c for c in accepted}
         self.assertEqual(by_id[CID].status, lf.STATUS_PENDING)
         self.assertEqual(by_id[CID].email, "pete.biz@gmail.com")
-        self.assertEqual(by_id[CID3].status, lf.STATUS_NO_CONTACT)
+        self.assertNotIn(CID3, by_id)                   # no plain-text email -> skipped, not added
+        self.assertEqual(state["seen"][CID3][1], "no_contact")
         self.assertNotIn(CID2, by_id)
         self.assertEqual(state["seen"][CID2][1], "out_of_band")
         self.assertEqual(stats["added: Pending"], 1)
