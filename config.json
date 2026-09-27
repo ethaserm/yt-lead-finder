@@ -1,0 +1,54 @@
+{
+  "queue_tab": "Business Queue",
+  "tracker_tab": "Outreach Tracker",
+  "replies_tab": "Replies",
+
+  "subscriber_min": 10000,
+  "subscriber_max": 50000,
+
+  "search": {
+    "relevance_language": "en",
+    "region_code": "",
+    "window_days": 30,
+    "pages_per_slot": 3,
+    "durations": ["medium", "long"],
+    "orders": ["date", "relevance"]
+  },
+
+  "qualify": {
+    "active_within_days": 30,
+    "recent_videos": 6,
+    "long_form_seconds": 180,
+    "min_long_form_recent": 2
+  },
+
+  "uk_policy": "review",
+  "non_english_policy": "review",
+  "record_no_contact": true,
+
+  "refresh_after_days": 28,
+  "seen_ttl_days": 30,
+
+  "freemail": [
+    "gmail.com", "googlemail.com", "outlook.com", "outlook.co.uk", "hotmail.com", "hotmail.co.uk", "live.com",
+    "live.co.uk", "yahoo.com", "yahoo.co.uk", "icloud.com", "me.com", "mac.com", "aol.com", "proton.me",
+    "protonmail.com", "pm.me", "gmx.com", "gmx.net", "zoho.com", "mail.com", "yandex.com", "tutanota.com", "hey.com"
+  ],
+
+  "niches": [
+    {
+      "label": "Gaming",
+      "category_id": "20",
+      "terms": [
+        "minecraft", "roblox", "fortnite", "call of duty", "warzone", "valorant", "apex legends",
+        "league of legends", "counter strike 2", "overwatch 2", "rainbow six siege", "rocket league",
+        "gta 5", "rust", "ark survival", "elden ring", "souls like", "pokemon", "zelda", "nintendo switch",
+        "horror games", "indie games", "cozy games", "stardew valley", "terraria", "the sims 4",
+        "strategy games", "city builder", "simulator games", "retro gaming", "speedrun", "lets play",
+        "gaming commentary", "game review", "gaming news", "pc gaming", "playstation 5", "xbox",
+        "vr gaming", "mobile gaming", "clash royale", "brawl stars", "dead by daylight", "lethal company",
+        "sea of thieves", "destiny 2", "world of warcraft", "hollow knight", "baldurs gate 3", "helldivers 2"
+      ]
+    }
+  ]
+}
