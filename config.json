@@ -2,6 +2,7 @@
   "queue_tab": "Business Queue",
   "tracker_tab": "Outreach Tracker",
   "replies_tab": "Replies",
+  "lists_tab": "Lists",
 
   "subscriber_min": 10000,
   "subscriber_max": 50000,
@@ -24,7 +25,7 @@
 
   "uk_policy": "review",
   "non_english_policy": "review",
-  "record_no_contact": true,
+  "record_no_contact": false,
 
   "refresh_after_days": 28,
   "seen_ttl_days": 30,

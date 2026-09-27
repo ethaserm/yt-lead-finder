@@ -15,7 +15,7 @@ Email rule (non-negotiable): an address is only used if it is written as plain v
 description, in the description of one of its recent videos, or on a linked personal site / link-in-bio page that
 can be fetched normally (robots.txt respected). YouTube's CAPTCHA-gated "View email address" button is never
 touched, no third-party email finder is used, and nothing is ever guessed or constructed. A channel with no
-plain-text email is recorded as "Review - no contact" and never emailed.
+plain-text email is skipped (config: record_no_contact).
 
 YouTube API data is not kept longer than 30 days: queue rows older than `refresh_after_days` are re-checked through
 the API (or deleted if they no longer qualify), and channel IDs in state.json expire after `seen_ttl_days`.
@@ -950,6 +950,76 @@ def load_known(sh, tabs):
     return ids, emails
 
 
+def _to_int(value):
+    digits = re.sub(r"[^0-9]", "", str(value or ""))
+    return int(digits) if digits else None
+
+
+def read_lists_settings(values):
+    """Settings Ethan edits on the Lists tab. `values` is the tab's get_all_values().
+    Returns {"settings": {lowercased name: value}, "ramp": [(from_day, cap)], "niches": [labels]}."""
+    out = {"settings": {}, "ramp": [], "niches": []}
+
+    def find(label):
+        for r, row in enumerate(values):
+            for c, cell in enumerate(row):
+                if str(cell).strip().lower() == label:
+                    return r, c
+        return None
+
+    def cell(r, c):
+        return str(values[r][c]).strip() if r < len(values) and c < len(values[r]) else ""
+
+    hit = find("setting")
+    if hit:
+        r, c = hit
+        for rr in range(r + 1, len(values)):
+            name = cell(rr, c)
+            if not name:
+                break
+            out["settings"][name.lower()] = cell(rr, c + 1)
+    hit = find("ramp: from day")
+    if hit:
+        r, c = hit
+        for rr in range(r + 1, len(values)):
+            day, cap = _to_int(cell(rr, c)), _to_int(cell(rr, c + 1))
+            if day is None or cap is None:
+                break
+            out["ramp"].append((day, cap))
+    hit = find("niche / category")
+    if hit:
+        r, c = hit
+        for rr in range(r + 1, len(values)):
+            name = cell(rr, c)
+            if not name:
+                break
+            out["niches"].append(name)
+    return out
+
+
+def load_lists_settings(sh, tab="Lists"):
+    try:
+        return read_lists_settings(sh.worksheet(tab).get_all_values())
+    except Exception as exc:  # noqa: BLE001 - fall back to config.json
+        log(f"  WARNING: couldn't read the '{tab}' tab ({type(exc).__name__}); using config.json defaults")
+        return {"settings": {}, "ramp": [], "niches": []}
+
+
+def apply_lists_settings(cfg, lists):
+    """Subscriber range and niches from the Lists tab override config.json. A niche listed on the sheet that has no
+    search terms in config.json is searched by its own name (no category filter)."""
+    st = lists.get("settings", {})
+    lo, hi = _to_int(st.get("subscriber min")), _to_int(st.get("subscriber max"))
+    if lo is not None and hi is not None and lo < hi:
+        cfg["subscriber_min"], cfg["subscriber_max"] = lo, hi
+    wanted = [n for n in lists.get("niches", []) if n.strip()]
+    if wanted:
+        known = {n["label"].strip().lower(): n for n in cfg["niches"]}
+        cfg["niches"] = [known.get(w.strip().lower(), {"label": w.strip(), "category_id": "", "terms": [w.strip()]})
+                         for w in wanted]
+    return cfg
+
+
 def load_suppression(sh, tab, freemail):
     """Every address in the Replies tab (replies, bounces, opt-outs); domains too for opt-outs (not freemail)."""
     emails, domains = set(), set()
@@ -997,10 +1067,11 @@ def row_for(c, header, today=None):
 
 # --------------------------------------------------------------------------- 30-day refresh of queue rows
 def stale_rows(values, h, header, refresh_days, today=None):
-    """[(sheet_row_number, channel_id, has_email)] for queue rows not checked through the API within refresh_days."""
+    """[(sheet_row_number, channel_id, has_email, status)] for queue rows not checked through the API recently."""
     today = today or date.today()
     url_i, email_i = col_index(header, "url"), col_index(header, "email")
     checked_i, date_i = col_index(header, "last_checked"), col_index(header, "date")
+    status_i = col_index(header, "status")
     out = []
     for offset, row in enumerate(values[h + 1:]):
         cell = lambda i: row[i].strip() if i is not None and i < len(row) else ""  # noqa: E731
@@ -1009,8 +1080,15 @@ def stale_rows(values, h, header, refresh_days, today=None):
             continue
         checked = parse_sheet_date(cell(checked_i)) or parse_sheet_date(cell(date_i))
         if checked is None or (today - checked).days >= refresh_days:
-            out.append((h + 2 + offset, ids[0], bool(cell(email_i))))
+            out.append((h + 2 + offset, ids[0], bool(cell(email_i)), cell(status_i)))
     return out
+
+
+def is_open_status(status):
+    """Rows still waiting on something (Pending / Review ...). Emailed / Skipped rows are finished: their permanent
+    record is the Outreach Tracker, so once stale they're simply removed from the queue."""
+    s = (status or "").strip().lower()
+    return s in ("", "pending") or s.startswith("review")
 
 
 def refresh_queue(yt, sh, ws, cfg, fetcher, rules, max_rows, dry_run):
@@ -1020,9 +1098,10 @@ def refresh_queue(yt, sh, ws, cfg, fetcher, rules, max_rows, dry_run):
     stale = stale_rows(values, h, header, cfg["refresh_after_days"])
     if not stale:
         return 0, 0
-    stale = stale[:max_rows]
-    delete_ids = {cid for _, cid, has_email in stale if not has_email}
-    check = [cid for _, cid, has_email in stale if has_email]
+    delete_ids = {cid for _, cid, _, status in stale if not is_open_status(status)}
+    stale = [s for s in stale if is_open_status(s[3])][:max_rows]
+    delete_ids |= {cid for _, cid, has_email, _ in stale if not has_email}
+    check = [cid for _, cid, has_email, _ in stale if has_email]
     updates = {}
     if check:
         items = {i["id"]: i for i in yt.channels(check)}
@@ -1106,7 +1185,7 @@ def evaluate(yt, found, cfg, state, fetcher, rules, max_new, deadline, stats):
             mark_seen(state, c.id, reason)
         else:
             in_band.append(c)
-    stats["in 10k-50k band"] += len(in_band)
+    stats["in subscriber band"] += len(in_band)
     in_band = in_band[:max_new]
     for c in in_band:
         c.video_ids = yt.recent_video_ids(c.uploads, cfg["qualify"]["recent_videos"])
@@ -1185,6 +1264,9 @@ def run(dry_run, searches, max_new):
             ws = sh.worksheet(cfg["queue_tab"])
         except gspread.WorksheetNotFound:
             ws = None if dry_run else sh.add_worksheet(cfg["queue_tab"], rows=1000, cols=len(DEFAULT_HEADER))
+        apply_lists_settings(cfg, load_lists_settings(sh, cfg.get("lists_tab", "Lists")))
+        log(f"  targeting {cfg['subscriber_min']:,}-{cfg['subscriber_max']:,} subs; niches: "
+            f"{', '.join(n['label'] for n in cfg['niches'])}")
         known_ids, known_emails = load_known(sh, [cfg["queue_tab"], cfg["tracker_tab"]])
         sup_emails, sup_domains = load_suppression(sh, cfg["replies_tab"], freemail)
         log(f"  suppression: {len(sup_emails)} addresses, {len(sup_domains)} domains")
