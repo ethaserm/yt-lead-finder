@@ -524,7 +524,11 @@ def run(dry_run, max_per_run, window):
     if not dry_run and not (sender and password):
         log("::warning::Setup not finished - GMAIL_SENDER_ADDRESS / GMAIL_APP_PASSWORD secrets missing. Nothing sent.")
         return 0
-    sh = lf.open_sheet()
+    try:
+        sh = lf.open_sheet()
+    except PermissionError as exc:
+        log(f"::error::{exc}")
+        return 1
     lists = lf.read_lists_settings(sh.worksheet(LISTS_TAB).get_all_values())
     st = lists["settings"]
     if is_yes(st.get("emailer paused")) and not dry_run:

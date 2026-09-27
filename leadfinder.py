@@ -911,8 +911,16 @@ def open_sheet():
     sheet_id = clean_secret(os.environ.get("SHEET_ID"))
     if not raw or not sheet_id:
         return None
-    gc = gspread.service_account_from_dict(json.loads(raw))
-    return gc.open_by_key(sheet_id)
+    info = json.loads(raw)
+    gc = gspread.service_account_from_dict(info)
+    try:
+        return gc.open_by_key(sheet_id)
+    except (PermissionError, gspread.exceptions.SpreadsheetNotFound) as exc:
+        # The service account's email isn't a secret (it can't sign in without the key), and it's exactly what
+        # needs to be in the Sheet's Share list, so name it.
+        raise PermissionError(f"service account {info.get('client_email', '?')} can't open the Sheet - share it "
+                              "with that address as Editor (or check GOOGLE_SERVICE_ACCOUNT_JSON is the right key)"
+                              ) from exc
 
 
 def prepare_queue_tab(ws, write=True):

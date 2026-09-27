@@ -289,6 +289,20 @@ class TestRun(unittest.TestCase):
             op.assert_not_called()
 
 
+class TestSheetAccess(unittest.TestCase):
+    def test_no_access_names_the_service_account(self):
+        import gspread
+        key = '{"client_email": "bot@proj.iam.gserviceaccount.com"}'
+        gc = mock.Mock()
+        gc.open_by_key.side_effect = PermissionError()
+        env = dict(ENV, GOOGLE_SERVICE_ACCOUNT_JSON=key)
+        with mock.patch.dict(os.environ, env), mock.patch.object(gspread, "service_account_from_dict", return_value=gc):
+            with self.assertRaises(PermissionError) as ctx:
+                lf.open_sheet()
+            self.assertIn("bot@proj.iam.gserviceaccount.com", str(ctx.exception))
+            self.assertEqual(em.run(True, 6, em.parse_window("12-21")), 1)
+
+
 class TestFinderQueueCleanup(unittest.TestCase):
     def test_emailed_rows_removed_after_28_days(self):
         old = "01/08/2026"
