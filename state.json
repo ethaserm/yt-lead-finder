@@ -1,6 +1,10 @@
 {
  "cursor": 0,
  "cycle": 0,
+ "quota": {
+  "day": "2026-09-27",
+  "used": 207
+ },
  "seen": {},
  "slot_pages": {},
  "window": null
