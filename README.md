@@ -1,47 +1,55 @@
-# YT lead finder (video editing outreach)
+# YT lead finder + emailer (video editing outreach)
 
-Finds YouTube channels with **10k–50k subscribers** that upload long-form videos regularly, takes a contact email **only if the creator has written it publicly**, and appends them to the **Business Queue** tab of the `YT_Editing_Hub` Google Sheet. Runs on GitHub Actions every 2 hours. Same architecture as `es-lead-finder` (config.json + state.json rotation + Sheets + a Claude scheduled task that does the emailing).
+Two scheduled GitHub Actions workflows, same shape as `es-lead-finder`, no Claude session involved anywhere:
 
-## How a channel gets in
+| Workflow | Script | Schedule | What it does |
+|---|---|---|---|
+| **Lead finder** | `leadfinder.py` | hourly at :17 UTC | Finds YouTube channels in the subscriber range (10k–50k by default) through the official YouTube Data API v3, takes a contact email only if it's written publicly, de-duplicates against the whole Sheet, adds new leads to **Business Queue**. |
+| **Emailer** | `emailer.py` | hourly at :41 UTC, 12:00–21:00 | Checks the outreach inbox for replies/bounces/opt-outs, then sends its share of today's cap to `Pending` leads through Gmail SMTP, logs each send to **Outreach Tracker**, marks the queue row `Emailed`. |
 
-1. **Search (official YouTube Data API v3 only).** Each run does 3 `search.list` calls (100 units each) for the next terms in the rotation in `config.json`: recent uploads (last 30 days), medium/long videos only (so Shorts-only channels never show up), English relevance, Gaming category for the gaming terms. The rotation cursor and page tokens live in `state.json`, committed back after every run, so nothing is rescanned. When the rotation wraps, a new cycle starts with a fresh 30-day window.
-2. **Subscriber band.** `channels.list` (1 unit per 50 channels) → keep 10,000–50,000, skip hidden counts.
-3. **Active + long-form.** `playlistItems.list` + `videos.list` (1 unit each) for the latest 6 uploads: last upload within 30 days and at least 2 of them over 3 minutes.
-4. **Email, never guessed:**
-   - plain text in the channel description (About), labelled ones ("Business inquiries: …") first;
-   - plain text in a recent video description, but only when it's labelled as a contact, repeated across several descriptions (a footer), or clearly the creator's own address. Sponsor lines ("use code…", "support@brand") are ignored;
-   - otherwise a linked link-in-bio page (Beacons, Carrd, bio.link, …) or a personal site whose domain matches the channel name, fetched normally with `robots.txt` respected (Linktree's robots.txt blocks automated fetches, so Linktree links are skipped);
-   - `[at]` / `[dot]` spellings are read, Cloudflare-protected addresses shown on a page are decoded, junk/no-reply/image-name addresses are dropped, and the domain must have a real MX record.
-   - **Never**: YouTube's CAPTCHA-gated "View email address" button, scraping youtube.com pages, or any third-party email-finder.
-5. **Status:** `Pending` (ready to email) · `Review - no contact` (no public email, never emailed) · `Review - UK channel (PECR)` (UK individuals/sole traders need consent for cold email) · `Review - non-English`. The emailer only ever touches `Pending`.
-6. **De-duplication / suppression:** channel IDs and emails already in Business Queue or Outreach Tracker are never re-added; any address in the Replies tab (bounces, opt-outs) is suppressed, and opted-out company domains too.
+Both have **Run workflow** buttons (`workflow_dispatch`) with a **dry run** tick box that's on by default.
 
-## YouTube API data retention (30 days)
+The control panel is the Google Sheet `YT_Editing_Hub`: settings (subscriber range, niches, sending ramp, pause switch, sender name) live on the **Lists** tab and the email copy on the **Templates** tab, so nothing about the pitch or prices is in this public repo.
 
-YouTube's Developer Policies only allow non-authorized API data to be stored for 30 days. So each run re-checks queue rows whose *Last Checked* is 28+ days old through the API (subscriber count, activity, email still published) and updates them, or deletes the row if it no longer qualifies or never had an email. Channel IDs in `state.json` expire after 30 days too.
+## Rules built in
 
-## Quota and Actions minutes
+- **Official API only.** Discovery is `search.list` → `channels.list` → `playlistItems.list` / `videos.list`. youtube.com pages are never scraped, and YouTube's CAPTCHA-gated "View email address" button is never touched.
+- **Emails are never guessed.** An address is used only if it's plain visible text in the channel description, a recent video description (labelled as a contact, repeated as a footer, or clearly the creator's own — sponsor lines like "use code…" / "support@brand" are ignored), or on a linked site/link-in-bio page fetched normally with `robots.txt` respected (Linktree's robots.txt blocks automated fetches, so Linktree links are skipped). The domain must have a real MX record. **No plain-text email → the channel is skipped.**
+- **Qualified leads only:** uploaded in the last 30 days and at least 2 of the last 6 uploads over 3 minutes (Shorts-only channels don't need intros).
+- **UK channels** go to `Review - UK channel (PECR)` (UK individuals/sole traders need consent for cold email); non-English channels to `Review - non-English`. The emailer never touches `Review` rows.
+- **YouTube's 30-day data rule:** queue rows are re-checked through the API after 28 days, or removed if they no longer qualify or were already emailed. Channel IDs in `state.json` expire after 30 days.
+- **Nothing is sent** until a row on the Templates tab is marked `Ready? = Yes` — and a template with placeholder text or an unknown `{placeholder}` is refused.
+- **Never re-emailed:** anyone already in Outreach Tracker (same email, channel or name+email), anyone who bounced or opted out (Replies tab — opted-out company domains too).
+- Logs never print email addresses (the repo and its Actions logs are public).
 
-- ~350 units per run (3 searches + ~50 one-unit calls) × 12 runs ≈ 4,200 of the free 10,000 units/day. `DAILY_QUOTA_BUDGET` (9,000) and `RUN_QUOTA_BUDGET` (700) are hard stops; YouTube's quota day resets at midnight Pacific.
-- The repo is **private** (Actions logs and the preview CSV contain creators' emails). A run bills ~1 minute, so every 2 hours ≈ 360–720 of the 2,000 free minutes a month. `timeout-minutes: 8` caps a bad run. Making the repo public removes the minutes limit if you ever need hourly runs, but then the logs are public.
+## Budgets
 
-## Setup
+- **YouTube quota** (free, 10,000 units/day, no billing): 2 searches × 100 units + ~50–130 one-unit calls per run × 24 runs ≈ 6,000–8,000 units/day. `DAILY_QUOTA_BUDGET=9000` is a hard stop; the quota day resets at midnight Pacific. The rotation cursor lives in `state.json` and is committed back after every run, so each run covers new ground.
+- **Sending ramp** (brand-new Gmail): 15/day in week 1 → 20 → 30 → 40 → 50, counted from the first email ever sent (edit the table on the Lists tab, or set *Daily cap override*). Each run sends `ceil(left today ÷ runs left today)`, max 6, with 45–120 s between emails.
+- **Actions minutes:** free (public repo).
 
-1. **YouTube API key** (free, no billing): Google Cloud Console → project `inbox-agent-t` (the ES Agents one) → *APIs & Services → Library* → enable **YouTube Data API v3** → *Credentials → Create credentials → API key* → restrict it to YouTube Data API v3.
-2. **Repo secrets** (*Settings → Secrets and variables → Actions*):
-   - `YOUTUBE_API_KEY` – the key from step 1
-   - `GOOGLE_SERVICE_ACCOUNT_JSON` – the same service-account JSON key the es-lead-finder repo uses (`lead-finder@inbox-agent-t.iam.gserviceaccount.com`)
-   - `SHEET_ID` – already set
-3. **Share the sheet** `YT_Editing_Hub` with `lead-finder@inbox-agent-t.iam.gserviceaccount.com` (Editor).
-4. **Test:** *Actions → Lead finder → Run workflow* with *Dry run* ticked, then open the `lead-preview` artifact. Untick for a real run.
+## Secrets (Settings → Secrets and variables → Actions)
 
-## The other two pieces
+| Secret | Status |
+|---|---|
+| `SHEET_ID` | set |
+| `GOOGLE_SERVICE_ACCOUNT_JSON` | the same service-account key es-lead-finder uses (`lead-finder@inbox-agent-t.iam.gserviceaccount.com`, already an Editor on the Sheet). GitHub secrets can't be copied between repos, so paste the JSON in here. |
+| `YOUTUBE_API_KEY` | Google Cloud Console → project `inbox-agent-t` → APIs & Services → Library → enable **YouTube Data API v3** → Credentials → Create credentials → API key → restrict it to YouTube Data API v3. No billing needed. |
+| `GMAIL_SENDER_ADDRESS` | the dedicated outreach Gmail address |
+| `GMAIL_APP_PASSWORD` | on that account: turn on 2-Step Verification, then create an App Password at myaccount.google.com/apppasswords (16 characters). Used for both SMTP (sending) and IMAP (reading replies). |
 
-- **Emailer:** Claude scheduled task "YT Editing Emailer (Pending Queue)". Prompt kept in `emailer/emailer_prompt.md`. It reads the `Pending (live)` tab (not the whole queue), respects the ramp on the Results tab (15/day in week 1 → 20 → 30 → 40 → 50; edit the table on the Lists tab), sends from the dedicated outreach Gmail through Composio, logs to Outreach Tracker, deletes the queue row. It does nothing until the email template is written.
-- **Reply tracking:** `apps_script/ReplyTracker.gs`, installed in the sheet from the outreach Gmail account. Fills Replies and moves Outreach Tracker statuses on (replied / bounced / opt-out) every 30 minutes.
+Until the secrets are there, scheduled runs skip with a warning instead of failing.
+
+## Going live checklist
+
+1. Add the secrets above.
+2. *Actions → Lead finder → Run workflow* (dry run ticked) → check the log, then untick for a real run.
+3. Write the pitch on the **Templates** tab (placeholders: `{channel_name}` `{niche}` `{subscribers}` `{subscribers_short}`; include an opt-out line and a postal address for US law), set `Ready?` to `Yes`.
+4. *Actions → Emailer → Run workflow* (dry run ticked) → check who it would email. From then on the schedule does the rest. Pause any time with *Emailer paused = Yes* on the Lists tab.
 
 ## Tuning
 
-- `config.json`: niches and search terms (Gaming by default; add another niche as another entry in `niches`), subscriber band, activity rules, what to do with UK / non-English channels (`review` or anything else to let them through), whether to record no-contact channels.
-- Workflow env: `SEARCHES_PER_RUN`, `MAX_NEW_PER_RUN`, `REFRESH_PER_RUN`, `MAX_SITE_FETCHES`, budgets.
-- Run the tests with `python -m pytest tests`.
+- **Lists tab:** subscriber min/max, niches to target (column A — a niche that has no search terms in `config.json` is searched by its own name), ramp, pause, sender name, reply checking.
+- **config.json:** search terms per niche, activity rules, UK / non-English handling (`review` or anything else to let them through), `record_no_contact`.
+- **Workflow env:** `SEARCHES_PER_RUN`, budgets, `SEND_WINDOW_UTC` (must match the emailer cron hours), `MAX_PER_RUN`, gaps between sends.
+- Tests: `python -m pytest tests`.

@@ -2,11 +2,11 @@ name: Lead finder
 
 on:
   schedule:
-    # Every 2 hours at :17 UTC (12 runs/day). Private repo, so this uses GitHub Actions minutes:
-    # ~1 billed minute per run => ~360-720 min/month, well inside the 2,000 free minutes.
-    # YouTube quota: 3 searches/run (300 units) + a few dozen 1-unit calls => ~4,200 of 10,000 units/day.
-    # The emailer scheduled task fires at :47, so the two never touch the Business Queue at the same time.
-    - cron: "17 */2 * * *"
+    # Hourly at :17 UTC. Public repo, so Actions minutes are free; the real ceiling is YouTube's free quota
+    # (10,000 units/day, search.list = 100 units). 2 searches/run (200) + ~50-130 one-unit calls, x24 runs
+    # = roughly 6,000-8,000 units/day. DAILY_QUOTA_BUDGET stops it at 9,000 whatever happens.
+    # The emailer runs at :41, so the two never edit the Business Queue at the same time.
+    - cron: "17 * * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -41,7 +41,7 @@ jobs:
           SHEET_ID: ${{ secrets.SHEET_ID }}
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
-          SEARCHES_PER_RUN: "3"
+          SEARCHES_PER_RUN: "2"
           MAX_NEW_PER_RUN: "40"
           DAILY_QUOTA_BUDGET: "9000"
           RUN_QUOTA_BUDGET: "700"
@@ -50,7 +50,8 @@ jobs:
           RUN_BUDGET_SECONDS: "300"
         run: python leadfinder.py
 
-      # The CSV holds scraped contact emails, so it's only kept as an artifact while the repo is private.
+      # The CSV holds contact emails, so it's only uploaded as an artifact if the repo is ever made private.
+      # (Logs never print email addresses.)
       - name: Upload preview CSV
         if: always() && github.event.repository.private == true
         continue-on-error: true

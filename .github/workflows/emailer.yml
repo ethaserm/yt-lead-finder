@@ -1,0 +1,49 @@
+name: Emailer
+
+on:
+  schedule:
+    # Hourly at :41 UTC from 12:00 to 21:00 (10 runs a day: UK afternoon/evening, US morning/afternoon).
+    # Each run sends only its share of what's left of today's cap (ramp on the Lists tab of the Sheet: 15/day
+    # in week 1, then 20, 30, 40, 50), with 45-120 s between emails - never one big burst.
+    # :41 keeps it clear of the lead finder at :17. SEND_WINDOW_UTC below must match these hours.
+    - cron: "41 12-21 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (check inbox + queue, send nothing, write nothing)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: yt-emailer
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Check replies, then send this run's share
+        env:
+          SHEET_ID: ${{ secrets.SHEET_ID }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GMAIL_SENDER_ADDRESS: ${{ secrets.GMAIL_SENDER_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+          SEND_WINDOW_UTC: "12-21"
+          MAX_PER_RUN: "6"
+          MIN_GAP_SECONDS: "45"
+          MAX_GAP_SECONDS: "120"
+        run: python emailer.py
