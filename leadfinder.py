@@ -2,8 +2,8 @@
 """YouTube creator lead finder for the video editing outreach.
 
 Finds YouTube channels with 10k-50k subscribers through the official YouTube Data API v3 and appends them to the
-"Business Queue" tab of the outreach Google Sheet. Same shape as the ES Agents lead finder: config.json holds the
-search terms, state.json remembers the rotation cursor between runs, GitHub Actions runs it on a schedule.
+"Business Queue" tab of the outreach Google Sheet. config.json holds the search terms, state.json remembers the
+rotation cursor between runs, GitHub Actions runs it on a schedule.
 
 Discovery (official API only, never scraping YouTube pages):
   search.list        100 units  recent long-form uploads for the next search term in the rotation
@@ -382,7 +382,7 @@ def clean_email(raw):
 
 
 def deobfuscate(text):
-    """'name [at] gmail [dot] com' -> 'name@gmail.com' (bracketed forms only, like the ES Agents finder)."""
+    """'name [at] gmail [dot] com' -> 'name@gmail.com' (bracketed forms only)."""
     out = re.sub(r"\s*[\[({]\s*at\s*[\])}]\s*", "@", text, flags=re.I)
     return re.sub(r"\s*[\[({]\s*dot\s*[\])}]\s*", ".", out, flags=re.I)
 

@@ -1,6 +1,6 @@
 # YT lead finder + emailer (video editing outreach)
 
-Two scheduled GitHub Actions workflows, same shape as `es-lead-finder`, no Claude session involved anywhere:
+Two scheduled GitHub Actions workflows, no Claude session involved anywhere:
 
 | Workflow | Script | Schedule | What it does |
 |---|---|---|---|
@@ -10,6 +10,8 @@ Two scheduled GitHub Actions workflows, same shape as `es-lead-finder`, no Claud
 Both have **Run workflow** buttons (`workflow_dispatch`) with a **dry run** tick box that's on by default.
 
 The control panel is the Google Sheet `YT_Editing_Hub`: settings (subscriber range, niches, sending ramp, pause switch, sender name) live on the **Lists** tab and the email copy on the **Templates** tab, so nothing about the pitch or prices is in this public repo.
+
+Everything is standalone: its own Google Cloud project (**YT Editing Outreach**, id `youtube-hub-500506`), its own service account, Sheet, repo and outreach Gmail. Nothing is shared with any other project.
 
 ## Rules built in
 
@@ -33,8 +35,8 @@ The control panel is the Google Sheet `YT_Editing_Hub`: settings (subscriber ran
 | Secret | Status |
 |---|---|
 | `SHEET_ID` | set |
-| `GOOGLE_SERVICE_ACCOUNT_JSON` | the same service-account key es-lead-finder uses (`lead-finder@inbox-agent-t.iam.gserviceaccount.com`, already an Editor on the Sheet). GitHub secrets can't be copied between repos, so paste the JSON in here. |
-| `YOUTUBE_API_KEY` | Google Cloud Console → project `inbox-agent-t` → APIs & Services → Library → enable **YouTube Data API v3** → Credentials → Create credentials → API key → restrict it to YouTube Data API v3. No billing needed. |
+| `GOOGLE_SERVICE_ACCOUNT_JSON` | Google Cloud Console → project **YT Editing Outreach** → IAM & Admin → Service accounts → create one for this pipeline (no roles needed) → Keys → Add key → JSON. Paste the whole file in here, then share the Sheet with that service account's email as Editor. |
+| `YOUTUBE_API_KEY` | Google Cloud Console → project **YT Editing Outreach** → APIs & Services → Credentials → Create credentials → API key → restrict it to YouTube Data API v3. The YouTube, Sheets and Drive APIs are already enabled in that project. No billing needed. |
 | `GMAIL_SENDER_ADDRESS` | the dedicated outreach Gmail address |
 | `GMAIL_APP_PASSWORD` | on that account: turn on 2-Step Verification, then create an App Password at myaccount.google.com/apppasswords (16 characters). Used for both SMTP (sending) and IMAP (reading replies). |
 
