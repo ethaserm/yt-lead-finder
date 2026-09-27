@@ -1,0 +1,70 @@
+name: Lead finder
+
+on:
+  schedule:
+    # Every 2 hours at :17 UTC (12 runs/day). Private repo, so this uses GitHub Actions minutes:
+    # ~1 billed minute per run => ~360-720 min/month, well inside the 2,000 free minutes.
+    # YouTube quota: 3 searches/run (300 units) + a few dozen 1-unit calls => ~4,200 of 10,000 units/day.
+    # The emailer scheduled task fires at :47, so the two never touch the Business Queue at the same time.
+    - cron: "17 */2 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (do not write to the Sheet or move the rotation)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write   # lets the job commit state.json so the rotation cursor survives between runs
+
+concurrency:
+  group: yt-lead-finder
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8   # hard cap so a hung site fetch can't burn Actions minutes
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Find leads
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          SHEET_ID: ${{ secrets.SHEET_ID }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+          SEARCHES_PER_RUN: "3"
+          MAX_NEW_PER_RUN: "40"
+          DAILY_QUOTA_BUDGET: "9000"
+          RUN_QUOTA_BUDGET: "700"
+          REFRESH_PER_RUN: "40"
+          MAX_SITE_FETCHES: "60"
+          RUN_BUDGET_SECONDS: "300"
+        run: python leadfinder.py
+
+      # The CSV holds scraped contact emails, so it's only kept as an artifact while the repo is private.
+      - name: Upload preview CSV
+        if: always() && github.event.repository.private == true
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: lead-preview
+          path: output/*.csv
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Save rotation state
+        if: always()
+        run: |
+          git config user.name "leadfinder-bot"
+          git config user.email "leadfinder-bot@users.noreply.github.com"
+          git add state.json || true
+          git diff --staged --quiet || (git commit -m "Update lead finder state" && git pull --rebase -q && git push)
