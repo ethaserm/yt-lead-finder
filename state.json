@@ -1,11 +1,337 @@
 {
  "cursor": 0,
- "cycle": 0,
+ "cycle": 1,
  "quota": {
   "day": "2026-09-27",
-  "used": 414
+  "used": 621
  },
- "seen": {},
- "slot_pages": {},
- "window": null
+ "seen": {
+  "UC-5r5gvyDnQZUJXNJ0csOjA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UC0cWWruNMb95iCBEOzPnjRA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UC1sELGmy5jp5fQUugmuYlXQ": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UC3RtJfeyfy07ccHBvhw-FjQ": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UC4hSUsEnYCeeMuvwMFIdcKw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UC4vf8b0cPLlWrk2Yc-lMfzA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UC5KG7dSVAzrNw4OlcFzYIeg": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UC5lZUznpRtJgtdeVBoEmokg": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UC6_hA0J3IiI7midWTbH1ffw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UC9Qu6o04oTf-b2acahQVk1g": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UC9fpAQPR4sWOlCtARTETadQ": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UC9nxFCZRk3hu2RNCKf3I6KA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCAxIxNEMX3iJsRbg8D-zpIw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCBmBea7IUgFaytgHQ9FNOlw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCCXQqvXuLZehCTi-QReCjwg": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCCsIkOosHXJroOwbRsu5jHg": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCDa_A867HXYj0MElQ5rHLXQ": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCDn21-5oLWeixS-N8iWiAFA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCERopYLhZjuplAOxlYhbvVg": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCETZ7OiW7-wqwb-6hsz3C4w": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCEe_7It1ZhJdJJaPEsMgs-w": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCFYMEFx-sI-IOPAZ2alN9UA": [
+   "2026-09-27",
+   "no_contact"
+  ],
+  "UCGQg1Rd86S6cKRmb_q-7U8A": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCGd_K7f7aJYsSwjokTfCtXA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCIPPMRA040LQr5QPyJEbmXA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCJHBJ7F-nAIlMGolm0Hu4vg": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCJiFgnnYpwlnadzTzhMnX_Q": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCKy1dAqELo0zrOtPkf0eTMw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCLJYBNVUsAWELW8JtamstiQ": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCMQOumrt3C7fFRT8oBc436Q": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCP_oaaQqr3r0jlxeHh_vE9A": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCRnI8mSAO35rx7T4-BFLxtA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCT0j49691bzB-glKbaYR9KA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCTMru0TwELkOJH653IEapVQ": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCTUSEgpRMBUxvNGlfZLsU9w": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCU9pX8hKcrx06XfOB-VQLdw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCUMKbZT3R4myY41_bReI3Cg": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCUxzwCjOUhswNDsLA5ux0IQ": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCVJySEgGPUCnSCrtAmWiKcw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCW3Ms3ZxVaZUniP-HifWCDg": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCWJNnA_s3Dg6fKu6J3e13AQ": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCWVSknuLPIRVGWf-4bFKT4Q": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCY1RutBTaQr641vggv3Byiw": [
+   "2026-09-27",
+   "added"
+  ],
+  "UCYSrT9w_V_5wpEahYXTeXUw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCZXp0zeNyNrIVobOm14oC9w": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UC_GQ4mac4oN3wl1UdbFuTEA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UC__7lJNseQG3ZmRZOdEPpRg": [
+   "2026-09-27",
+   "no_contact"
+  ],
+  "UCaqn1fszPDnFQ8x84bvxhnw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCbWYmIdZ2hpVMpPhRI9pI5Q": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCc2RL8jvY1rJPuCnJVsIQWw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCeOrlSK-mWTZjB66O9ttHpg": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCgWFfsqfnJP212SNY166Ggw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCj4zC1Hfj-uc90FUXzRamNw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCj83kSchMPDKsyyHlZGdguQ": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCjd6dZ_uV92VTVPCyjw_OIQ": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCjrK7tSE1Lq6x9ECLY8fYpg": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCk-A3KCrFEpHqjfzbfSSn-g": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCl5Ml3mPE5GRRbYm2cH2Lxw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UClSRQHOTv8551MUhNrtah2A": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UClqifC6Nd7v-IfTqce4k62A": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCnnkTXnyn0uZzmArZO99Klg": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCo9YmZIp3fBlPUdGOagryQA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCpAACjgeoPZ9HkMoSAsBqgg": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCpHCfDBZ3AJyuofz6DHy-ew": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCpgtTX3Sk1XXduTHdbB7fqg": [
+   "2026-09-27",
+   "no_contact"
+  ],
+  "UCpsa6fkURw9M2wKaCCEDgig": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCqQ7G13ePHxSlmesNgse_bA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCrKw3itf6oZ8RUX8Dw57w1g": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCrbfXRWSc4T2HaUJss3jm1A": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCsbAcySsoEcpnwG2sQvT2IA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCsuKgiVb2KJ2sZdrrwoAqsA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCtNxjL-8WeFZ6LbfrOYgNoQ": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCtgGt41P7WhoZxtEFPt-5pA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCuGNz90cYuR_IETAuQSaZbw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCuuBNabOJHBc5rZfX4He9pA": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCv9Mx5sR4FfBxjVmdY_NTRQ": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCvuJkuGyQoK__wx9_H98gkw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCxc7QhSuo4MWrkGsaMVCqAw": [
+   "2026-09-27",
+   "out_of_band"
+  ],
+  "UCxm-rmArnUkNc-Lpf5s6X8g": [
+   "2026-09-27",
+   "out_of_band"
+  ]
+ },
+ "slot_pages": {
+  "Gaming|minecraft|medium|date": {
+   "pages": 2,
+   "token": "CGQQAA"
+  }
+ },
+ "window": {
+  "published_after": "2026-08-28T21:19:51Z",
+  "published_before": "2026-09-27T21:19:51Z",
+  "started": "2026-09-27"
+ }
 }
