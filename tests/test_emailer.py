@@ -118,6 +118,17 @@ class TestBudget(unittest.TestCase):
         cap, sent, allowed = em.send_budget(lists, self.tracker([today] * 15), late, window, 6)
         self.assertEqual(allowed, 0)                                 # cap reached
 
+    def test_two_runs_an_hour(self):
+        lists = {"settings": {}, "ramp": [(1, 40)]}
+        window = em.parse_window("12-21")
+        early = datetime(2026, 10, 1, 12, 8, tzinfo=timezone.utc)
+        self.assertEqual(em.send_budget(lists, self.tracker([]), early, window, 6, 2)[2], 2)   # 40 over 20 runs
+        last = datetime(2026, 10, 1, 21, 38, tzinfo=timezone.utc)
+        today = em.london_today(last).strftime("%d/%m/%Y")
+        self.assertEqual(em.send_budget(lists, self.tracker([today] * 36), last, window, 6, 2)[2], 4)  # last run
+        first_half = datetime(2026, 10, 1, 21, 8, tzinfo=timezone.utc)
+        self.assertEqual(em.send_budget(lists, self.tracker([today] * 36), first_half, window, 6, 2)[2], 2)
+
 
 class TestPickLeads(unittest.TestCase):
     def test_dedupe_and_suppression(self):

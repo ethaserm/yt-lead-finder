@@ -13,7 +13,7 @@
     "window_days": 30,
     "pages_per_slot": 3,
     "durations": ["medium", "long"],
-    "orders": ["date", "relevance"]
+    "orders": ["relevance", "date"]
   },
 
   "qualify": {

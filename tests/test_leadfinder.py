@@ -341,6 +341,21 @@ class TestRotation(unittest.TestCase):
         self.assertEqual([cid for cid, _ in found], [CID3])
         self.assertEqual(state["slot_pages"][lf.slot_key(slots[0])]["token"], "N")
 
+    def test_relevance_searches_come_first(self):
+        slots = lf.build_slots(CFG)
+        n_terms = len(CFG["niches"][0]["terms"]) * len(CFG["search"]["durations"])
+        self.assertEqual({s["order"] for s in slots[:n_terms]}, {"relevance"})
+
+    def test_catch_up_after_dropped_runs(self):
+        now = datetime(2026, 9, 28, 12, 0, tzinfo=timezone.utc)
+        ago = lambda h: {"last_run": lf.iso_z(now - timedelta(hours=h))}  # noqa: E731
+        self.assertEqual(lf.catch_up_searches({}, 3, 10, now), 3)             # first run: one hour's worth
+        self.assertEqual(lf.catch_up_searches(ago(0.5), 3, 10, now), 2)       # half-hourly schedule
+        self.assertEqual(lf.catch_up_searches(ago(3), 3, 10, now), 9)         # two runs were dropped
+        self.assertEqual(lf.catch_up_searches(ago(20), 3, 10, now), 10)       # capped
+        self.assertEqual(lf.catch_up_searches(ago(0.05), 3, 10, now), 1)      # always at least one
+        self.assertEqual(lf.catch_up_searches({"last_run": "garbage"}, 3, 10, now), 3)
+
     def test_prune_seen(self):
         state = {"seen": {CID: ["2026-08-01", "out_of_band"], CID2: ["2026-09-20", "added"]}}
         self.assertEqual(lf.prune_seen(state, 30, date(2026, 9, 27)), 1)

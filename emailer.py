@@ -225,15 +225,19 @@ def parse_window(spec):
     return list(range(a, b + 1)) if a <= b else list(range(a, 24)) + list(range(0, b + 1))
 
 
-def send_budget(lists, tracker, now, window, max_per_run):
+def send_budget(lists, tracker, now, window, max_per_run, runs_per_hour=1):
     """(today's cap, sent today, allowed this run). The day's remaining allowance is split evenly over the runs
-    still scheduled today, so e.g. 15/day over 10 runs goes out 1-2 at a time."""
+    still scheduled today, so e.g. 15/day over 10 runs goes out 1-2 at a time. If GitHub drops a run, the next one
+    simply has a bigger share (still capped at max_per_run)."""
     today = london_today(now)
     sent_today = sum(1 for d in tracker.dates if d == today)
     cap = daily_cap(lists, min(tracker.dates) if tracker.dates else None, today)
     left = max(cap - sent_today, 0)
-    hour = now.astimezone(timezone.utc).hour
-    runs_left = sum(1 for h in window if h >= hour) or 1
+    utc = now.astimezone(timezone.utc)
+    rph = max(1, runs_per_hour)
+    later = sum(1 for h in window if h > utc.hour) * rph
+    this_hour = rph - min(utc.minute * rph // 60, rph - 1) if utc.hour in window else 0
+    runs_left = (later + this_hour) or 1
     this_run = min(math.ceil(left / runs_left), max_per_run, left)
     return cap, sent_today, this_run
 
@@ -553,7 +557,7 @@ def run(dry_run, max_per_run, window):
             log(f"::warning::Template '{t.name}' is marked Ready but can't be used: {'; '.join(t.problems())}")
 
     now = datetime.now(timezone.utc)
-    cap, sent_today, allowed = send_budget(lists, tracker, now, window, max_per_run)
+    cap, sent_today, allowed = send_budget(lists, tracker, now, window, max_per_run, lf.env_int("RUNS_PER_HOUR", 1))
     to_send, fixes = pick_leads(queue_ws.get_all_values(), tracker, sup_emails, sup_domains, allowed)
     log(f"today's cap {cap} (ramp), sent today {sent_today}, this run may send {allowed}; "
         f"{len(to_send)} lead(s) picked, {len(fixes)} queue row(s) to tidy (dupes / suppressed)")

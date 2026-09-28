@@ -4,8 +4,8 @@ Two scheduled GitHub Actions workflows, no Claude session involved anywhere:
 
 | Workflow | Script | Schedule | What it does |
 |---|---|---|---|
-| **Lead finder** | `leadfinder.py` | hourly at :17 UTC | Finds YouTube channels in the subscriber range (10k–50k by default) through the official YouTube Data API v3, takes a contact email only if it's written publicly, de-duplicates against the whole Sheet, adds new leads to **Business Queue**. |
-| **Emailer** | `emailer.py` | hourly at :41 UTC, 12:00–21:00 | Checks the outreach inbox for replies/bounces/opt-outs, then sends its share of today's cap to `Pending` leads through Gmail SMTP, logs each send to **Outreach Tracker**, marks the queue row `Emailed`. |
+| **Lead finder** | `leadfinder.py` | :23 and :53 past every hour (UTC) | Finds YouTube channels in the subscriber range (10k–50k by default) through the official YouTube Data API v3, takes a contact email only if it's written publicly, de-duplicates against the whole Sheet, adds new leads to **Business Queue**. |
+| **Emailer** | `emailer.py` | :08 and :38 past the hour, 12:00–21:59 UTC | Checks the outreach inbox for replies/bounces/opt-outs, then sends its share of today's cap to `Pending` leads through Gmail SMTP, logs each send to **Outreach Tracker**, marks the queue row `Emailed`. |
 
 Both have **Run workflow** buttons (`workflow_dispatch`) with a **dry run** tick box that's on by default.
 
@@ -26,8 +26,9 @@ Everything is standalone: its own Google Cloud project (**YT Editing Outreach**,
 
 ## Budgets
 
-- **YouTube quota** (free, 10,000 units/day, no billing): 2 searches × 100 units + ~50–130 one-unit calls per run × 24 runs ≈ 6,000–8,000 units/day. `DAILY_QUOTA_BUDGET=9000` is a hard stop; the quota day resets at midnight Pacific. The rotation cursor lives in `state.json` and is committed back after every run, so each run covers new ground.
-- **Sending ramp** (brand-new Gmail): 15/day in week 1 → 20 → 30 → 40 → 50, counted from the first email ever sent (edit the table on the Lists tab, or set *Daily cap override*). Each run sends `ceil(left today ÷ runs left today)`, max 6, with 45–120 s between emails.
+- **YouTube quota** (free, 10,000 units/day, no billing): ~3 searches an hour × ~105 units (100 for the search + the channel/video checks) ≈ 7,500 units/day. GitHub delays or drops many scheduled runs, so each run sizes itself by the time since the last run that actually happened (`SEARCHES_PER_HOUR` × hours, max `MAX_SEARCHES_PER_RUN`). `DAILY_QUOTA_BUDGET=9000` is a hard stop; the quota day resets at midnight Pacific. The rotation cursor lives in `state.json` and is committed back after every run, so each run covers new ground.
+- **Search order:** every search term is tried with `order=relevance` before `order=date` - on a side-by-side test (the *Compare search settings* workflow) relevance found about twice as many 10k–50k channels with a public email.
+- **Sending ramp** (brand-new Gmail): 15/day in week 1 → 20 → 30 → 40 → 50, counted from the first email ever sent (edit the table on the Lists tab, or set *Daily cap override*). Each run sends `ceil(left today ÷ runs left today)`, max 6, with 45–120 s between emails; a dropped run just makes the next one's share bigger.
 - **Actions minutes:** free (public repo).
 
 ## Secrets (Settings → Secrets and variables → Actions)
@@ -53,5 +54,6 @@ Until the secrets are there, scheduled runs skip with a warning instead of faili
 
 - **Lists tab:** subscriber min/max, niches to target (column A — a niche that has no search terms in `config.json` is searched by its own name), ramp, pause, sender name, reply checking.
 - **config.json:** search terms per niche, activity rules, UK / non-English handling (`review` or anything else to let them through), `record_no_contact`.
-- **Workflow env:** `SEARCHES_PER_RUN`, budgets, `SEND_WINDOW_UTC` (must match the emailer cron hours), `MAX_PER_RUN`, gaps between sends.
+- **Workflow env:** `SEARCHES_PER_HOUR` / `MAX_SEARCHES_PER_RUN` (or `SEARCHES_PER_RUN` for a fixed number), budgets, `SEND_WINDOW_UTC` + `RUNS_PER_HOUR` (must match the emailer cron), `MAX_PER_RUN`, gaps between sends.
+- **Compare search settings** (manual workflow): tries a few terms with different search settings and reports which finds the most usable leads. Uses ~1,600 quota units.
 - Tests: `python -m pytest tests`.

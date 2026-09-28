@@ -778,8 +778,10 @@ def build_slots(cfg):
     niches = cfg["niches"]
     longest = max((len(n["terms"]) for n in niches), default=0)
     slots = []
-    for duration in s["durations"]:
-        for order in s["orders"]:
+    # Order is the outer loop: every term is searched with the first order (relevance - measured to find roughly
+    # twice as many 10k-50k channels with a public email as date order) before any term is repeated with the next.
+    for order in s["orders"]:
+        for duration in s["durations"]:
             for i in range(longest):
                 for n in niches:
                     if i < len(n["terms"]):
@@ -826,6 +828,20 @@ def save_state(state):
     with open(os.path.join(HERE, "state.json"), "w", encoding="utf-8") as fh:
         json.dump(state, fh, indent=1, sort_keys=True)
         fh.write("\n")
+
+
+def catch_up_searches(state, per_hour, max_per_run, now=None):
+    """GitHub delays or drops a lot of scheduled runs, so size each run by the time since the last one that really
+    ran: a run after a 3-hour gap does 3 hours' worth of searches (capped). The daily quota budget still applies."""
+    now = now or utc_now()
+    hours = 1.0
+    try:
+        if state.get("last_run"):
+            hours = (now - datetime.fromisoformat(state["last_run"])).total_seconds() / 3600
+    except (TypeError, ValueError):
+        pass
+    hours = min(max(hours, 0.0), 12.0)
+    return max(1, min(max_per_run, int(per_hour * hours + 0.5)))
 
 
 def prune_seen(state, ttl_days, today=None):
@@ -1257,6 +1273,9 @@ def run(dry_run, searches, max_new):
     dropped = prune_seen(state, cfg["seen_ttl_days"])
     log(f"quota used today (Pacific): {quota.q['used']}/{quota.daily}; seen channels: {len(state['seen'])} "
         f"(expired {dropped})")
+    if not searches:
+        searches = catch_up_searches(state, env_int("SEARCHES_PER_HOUR", 3), env_int("MAX_SEARCHES_PER_RUN", 10))
+        log(f"searches this run: {searches} (previous run: {state.get('last_run') or 'none yet'})")
 
     sh = ws = None
     known_ids, known_emails, sup_emails, sup_domains = set(), set(), set(), set()
@@ -1332,6 +1351,7 @@ def run(dry_run, searches, max_new):
         saved["quota"] = state["quota"]
         save_state(saved)
     else:
+        state["last_run"] = iso_z(utc_now())
         save_state(state)
     return 0
 
@@ -1339,7 +1359,8 @@ def run(dry_run, searches, max_new):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="no Sheet writes, rotation unchanged")
-    ap.add_argument("--searches", type=int, default=env_int("SEARCHES_PER_RUN", 3))
+    ap.add_argument("--searches", type=int, default=env_int("SEARCHES_PER_RUN", 0),
+                    help="fixed number of searches; 0 = size the run by time since the last run (SEARCHES_PER_HOUR)")
     ap.add_argument("--max-new", type=int, default=env_int("MAX_NEW_PER_RUN", 40))
     args = ap.parse_args()
     sys.exit(run(args.dry_run or env_flag("DRY_RUN", False), args.searches, args.max_new))
