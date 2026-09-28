@@ -1,0 +1,31 @@
+name: Compare search settings
+
+# Manual only. Tries the same search terms with different YouTube search settings and reports which settings find
+# the most channels in the subscriber band with a public email. Writes nothing to the Sheet or state.json.
+on:
+  workflow_dispatch:
+    inputs:
+      terms:
+        description: "Comma-separated search terms to test"
+        type: string
+        default: "minecraft,fortnite,horror games"
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Compare
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          TERMS: ${{ inputs.terms }}
+        run: python tools/compare_search.py
