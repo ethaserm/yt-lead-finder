@@ -72,6 +72,7 @@ class FakeYT:
         self.quota = quota
 
     def search(self, slot, window, token=None):
+        window["published_after"], window["published_before"]  # like the real API call: a missing window fails here
         self.search_calls.append((slot["term"], token))
         return self.pages.get((slot["term"], token), ([], None))
 
@@ -332,6 +333,40 @@ class TestRotation(unittest.TestCase):
         self.assertEqual(state["cursor"], 0)
         self.assertIsNone(state["window"])
         self.assertEqual(state["cycle"], 1)
+
+    def test_rotation_wrapping_mid_run_starts_a_new_cycle_instead_of_crashing(self):
+        # Regression: advance() clears state["window"] when the cursor wraps; a run with searches left over
+        # then passed window=None to the API call (TypeError) and, as state is only saved after a clean run,
+        # every later run crashed in the same place.
+        cfg = dict(CFG, niches=[{"label": "Gaming", "category_id": "20", "terms": ["a", "b"]}],
+                   search=dict(CFG["search"], durations=["medium"], orders=["date"], pages_per_slot=1))
+        slots = lf.build_slots(cfg)
+        yt = FakeYT(pages={("a", None): ([CID], None), ("b", None): ([CID2], None)})
+        state = {"cursor": 1, "slot_pages": {}, "seen": {}, "cycle": 1,
+                 "window": {"published_after": "2026-08-28T00:00:00Z", "published_before": "2026-09-27T00:00:00Z"}}
+        found = lf.run_searches(yt, state, cfg, slots, 3, known_ids=set())
+        self.assertEqual(yt.search_calls, [("b", None), ("a", None), ("b", None)])
+        self.assertEqual([cid for cid, _ in found], [CID2, CID])  # the repeat of 'b' finds nothing new
+        self.assertEqual(state["cycle"], 2)  # the wrap began cycle 2 with a fresh window
+        self.assertEqual(state["cursor"], 0)  # ...which wrapped again on the 3rd search
+        self.assertIsNone(state["window"])
+
+    def test_every_search_gets_a_publish_window(self):
+        cfg = dict(CFG, niches=[{"label": "Gaming", "category_id": "20", "terms": ["a"]}],
+                   search=dict(CFG["search"], durations=["medium"], orders=["date"], pages_per_slot=1))
+        slots = lf.build_slots(cfg)
+        seen_windows = []
+
+        class WindowYT(FakeYT):
+            def search(self, slot, window, token=None):
+                seen_windows.append(window)
+                return super().search(slot, window, token)
+        yt = WindowYT(pages={("a", None): ([CID], None)})
+        state = {"cursor": 0, "slot_pages": {}, "seen": {}, "cycle": 0}
+        lf.run_searches(yt, state, cfg, slots, 4, known_ids=set())
+        self.assertEqual(len(seen_windows), 4)
+        for w in seen_windows:
+            self.assertTrue(w and w["published_after"] and w["published_before"])
 
     def test_known_and_seen_are_skipped(self):
         slots = lf.build_slots(CFG)
