@@ -868,19 +868,27 @@ def advance(state, slots):
         state["slot_pages"] = {}
 
 
+def ensure_window(state, cfg):
+    """Start a new search cycle (a fresh publish window) if there is none. advance() clears the window when
+    the rotation wraps, which can happen part-way through a run, so this is checked before every search."""
+    if state.get("window"):
+        return
+    state["window"] = new_window(cfg)
+    state["cycle"] = state.get("cycle", 0) + 1
+    state["slot_pages"] = {}
+    log(f"new search cycle #{state['cycle']}: uploads {state['window']['published_after'][:10]} to "
+        f"{state['window']['published_before'][:10]}")
+
+
 def run_searches(yt, state, cfg, slots, searches, known_ids):
     """Runs up to `searches` search.list calls following the rotation. Returns [(channel_id, slot)] (new only)."""
-    if not state.get("window"):
-        state["window"] = new_window(cfg)
-        state["cycle"] = state.get("cycle", 0) + 1
-        state["slot_pages"] = {}
-        log(f"new search cycle #{state['cycle']}: uploads {state['window']['published_after'][:10]} to "
-            f"{state['window']['published_before'][:10]}")
+    ensure_window(state, cfg)
     found, found_ids = [], set()
     pages_per_slot = cfg["search"]["pages_per_slot"]
     for _ in range(searches):
         if not slots:
             break
+        ensure_window(state, cfg)  # the rotation may have wrapped on the previous search
         slot = slots[state["cursor"] % len(slots)]
         key = slot_key(slot)
         progress = state["slot_pages"].get(key, {"pages": 0, "token": None})
