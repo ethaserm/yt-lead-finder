@@ -1,10 +1,10 @@
 {
- "cursor": 198,
- "cycle": 3,
- "last_run": "2026-11-12T19:16:34Z",
+ "cursor": 1,
+ "cycle": 4,
+ "last_run": "2026-11-13T00:35:57Z",
  "quota": {
   "day": "2026-11-12",
-  "used": 2065
+  "used": 3088
  },
  "seen": {
   "UC--0_8ZXQ7WIGdi68HEAb0Q": [
@@ -243,6 +243,10 @@
    "2026-11-05",
    "out_of_band"
   ],
+  "UC-EYX4hhuZCO3qBOzVPLleQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UC-EbTBPKpTSNWbpIiOdPzRQ": [
    "2026-10-26",
    "out_of_band"
@@ -382,6 +386,10 @@
   "UC-LyZwNWaHpdjesMcldb0tw": [
    "2026-10-20",
    "no_contact"
+  ],
+  "UC-M16lOcjto6EmZuLyj-LSQ": [
+   "2026-11-13",
+   "out_of_band"
   ],
   "UC-M6spWNOjwhfHxudHQsmTw": [
    "2026-11-05",
@@ -919,6 +927,10 @@
    "2026-10-24",
    "out_of_band"
   ],
+  "UC-jUN8o8en0iCNQGHJUoU1g": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UC-jYK2AdVmH8LNcjTI_lI6g": [
    "2026-11-07",
    "out_of_band"
@@ -1091,6 +1103,10 @@
    "2026-10-24",
    "out_of_band"
   ],
+  "UC-sR4njV0UZgDSE0M_P0mrQ": [
+   "2026-11-13",
+   "no_contact"
+  ],
   "UC-sSmlNs8v5MMGt0CJfyjWw": [
    "2026-11-05",
    "out_of_band"
@@ -1238,6 +1254,10 @@
   "UC-xtXczPAzm-NDAUwacPQJQ": [
    "2026-10-18",
    "out_of_band"
+  ],
+  "UC-xzfvLFPyHc1ZKMXPkfiPw": [
+   "2026-11-13",
+   "no_contact"
   ],
   "UC-y4NV_zbDtEx-wkUe9QxEQ": [
    "2026-11-07",
@@ -4259,6 +4279,10 @@
    "2026-10-24",
    "out_of_band"
   ],
+  "UC2JkTX6hss0qqYvlb1e91Iw": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UC2KJIHmBa4uTHDPHwl1WzFw": [
    "2026-11-09",
    "out_of_band"
@@ -5883,6 +5907,10 @@
    "2026-10-31",
    "out_of_band"
   ],
+  "UC3S_VM_MubKxBF6xig9xKyQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UC3S_ZnKs_PhVfcr73SSETxg": [
    "2026-11-08",
    "out_of_band"
@@ -7355,6 +7383,10 @@
    "2026-10-26",
    "out_of_band"
   ],
+  "UC4XySMu_I0CynOSDe6ZQe3A": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UC4YAF2Am-eRhFhiQzwjJmkQ": [
    "2026-10-30",
    "out_of_band"
@@ -7373,6 +7405,10 @@
   ],
   "UC4ZRy-bzMX7iFiNzoStNbZQ": [
    "2026-11-12",
+   "out_of_band"
+  ],
+  "UC4Ztub83pSELDWywh7Q6eJA": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UC4_8D8D7O2J7QKGJYBnZomg": [
@@ -7545,6 +7581,10 @@
   ],
   "UC4hMjTQveHRH-WzcSoYA1FA": [
    "2026-11-04",
+   "out_of_band"
+  ],
+  "UC4hSUsEnYCeeMuvwMFIdcKw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UC4heo2V3RK6STlbP6Du1Tzg": [
@@ -7734,6 +7774,10 @@
   "UC4r15bUnXbK6lF9akna305g": [
    "2026-10-25",
    "no_contact"
+  ],
+  "UC4r9IZ_1Ot8wLOkBHWVNO7A": [
+   "2026-11-13",
+   "out_of_band"
   ],
   "UC4rIuQ5aQODhbtex4ej1_zA": [
    "2026-10-29",
@@ -8941,6 +8985,10 @@
   ],
   "UC5n_8kS0RFIKuCsPoUCVd8A": [
    "2026-11-05",
+   "out_of_band"
+  ],
+  "UC5oEBYAMAUs_3nOZ6Jr6_Gg": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UC5oTfQpvs8y5rBGhlqTzxBA": [
@@ -10367,6 +10415,10 @@
    "2026-10-27",
    "out_of_band"
   ],
+  "UC6vjhsAX33TWNyMzNBkqdfw": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UC6w8-yH6NwN3W0KWEkjdKQA": [
    "2026-10-24",
    "out_of_band"
@@ -10647,6 +10699,10 @@
    "2026-10-21",
    "out_of_band"
   ],
+  "UC785dVhPXwEXCurVBbb2KTg": [
+   "2026-11-13",
+   "no_contact"
+  ],
   "UC78FZ2xI4KDQnxRSEK8Bk0Q": [
    "2026-10-24",
    "no_contact"
@@ -10669,6 +10725,10 @@
   ],
   "UC79Z9kbJUiWglj-Gvew_9Eg": [
    "2026-11-08",
+   "out_of_band"
+  ],
+  "UC79eBHM6q6vPRaPG8zv3RxA": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UC79fXEtOG7c6nWouYStIl3w": [
@@ -10817,6 +10877,10 @@
   ],
   "UC7HXQHCI183Oivq-aqbURNg": [
    "2026-10-25",
+   "out_of_band"
+  ],
+  "UC7HXboQob19g0V7R6hLvBWA": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UC7I4FmQVySvJldwa8lgYCbw": [
@@ -11279,6 +11343,10 @@
    "2026-11-06",
    "out_of_band"
   ],
+  "UC7bggZg7rsLHoqEd1GCpTmQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UC7c29vyFIdHdCDNEpljTT7g": [
    "2026-11-11",
    "out_of_band"
@@ -11293,6 +11361,10 @@
   ],
   "UC7cXGVuFnJK-5tDWSefG1yw": [
    "2026-11-08",
+   "out_of_band"
+  ],
+  "UC7cb8xWr6I0Ji5W5xPNykSQ": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UC7djR194ZB8dpXaIUCbiqUQ": [
@@ -14035,6 +14107,10 @@
    "2026-11-11",
    "out_of_band"
   ],
+  "UC9hrZ2jnqFacN1kgm5w6Ppw": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UC9i3UWlxSnzIgwwmX6gdHLw": [
    "2026-10-27",
    "out_of_band"
@@ -14133,6 +14209,14 @@
   ],
   "UC9m0sk4JMYCn4pEYOz91Cxw": [
    "2026-11-03",
+   "no_contact"
+  ],
+  "UC9mJdF_VIoQifruuGz6BhFw": [
+   "2026-11-13",
+   "out_of_band"
+  ],
+  "UC9mQ8D1he3hieA8Yyq5UBUg": [
+   "2026-11-13",
    "no_contact"
   ],
   "UC9mRPQ-h5lG6CJaUSFIK5sg": [
@@ -14287,6 +14371,10 @@
    "2026-11-01",
    "out_of_band"
   ],
+  "UC9tfX0XAVSSdAR29QBg8CbQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UC9tmPD0sW8A3WWTQq5NBC3A": [
    "2026-10-26",
    "out_of_band"
@@ -14401,6 +14489,10 @@
   ],
   "UCA1lqoWWztPhhxZOva58QOQ": [
    "2026-10-25",
+   "out_of_band"
+  ],
+  "UCA1wRq3bSM8cm7FiV4QTnNA": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCA1yFi_O4i_aevp6NCdfmXA": [
@@ -14657,6 +14749,10 @@
   ],
   "UCAGKmH4_RcnizKsaPgh6xbw": [
    "2026-11-08",
+   "out_of_band"
+  ],
+  "UCAGP_33m16WyXTRzMXzCHPg": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCAGRhXIbnKPNVf1JvwafawQ": [
@@ -16227,6 +16323,10 @@
    "2026-11-04",
    "out_of_band"
   ],
+  "UCBSGG7fnd89HISZ_nEzoP8g": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCBST8tfPIr3_HDvP5-PO3MQ": [
    "2026-10-27",
    "out_of_band"
@@ -16331,6 +16431,10 @@
    "2026-11-08",
    "out_of_band"
   ],
+  "UCBY9VFbEPkKAAVkI44hCF2A": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCBYO5axZoTcEEX_FQKsDFrQ": [
    "2026-11-09",
    "out_of_band"
@@ -16393,6 +16497,10 @@
   ],
   "UCBaHYWh_265k73PxkgaNkrA": [
    "2026-11-10",
+   "out_of_band"
+  ],
+  "UCBaIZUM8HTukXLB83bvcy7w": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCBa_T5B_hhfdefXLYRPJ99g": [
@@ -16493,6 +16601,10 @@
   ],
   "UCBflVfI56v2JWuGhNTUbgYg": [
    "2026-11-09",
+   "out_of_band"
+  ],
+  "UCBfzWt9wYnswUB3D0LwXVxQ": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCBgIxCjIfkSHuwCUajbQEuA": [
@@ -17455,6 +17567,10 @@
    "2026-11-02",
    "no_contact"
   ],
+  "UCCQUVOdMhYPi1AEPL5vcv_Q": [
+   "2026-11-13",
+   "no_contact"
+  ],
   "UCCQ_qGKoPtGcHLEqMO4WVIg": [
    "2026-11-09",
    "out_of_band"
@@ -17953,6 +18069,10 @@
   ],
   "UCCpZWle6fSgQXn3gLKoCGOg": [
    "2026-10-30",
+   "out_of_band"
+  ],
+  "UCCpbv3EriVFP2TadY6twx0Q": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCCpgDuSBpmwc5hoPqhQF-_Q": [
@@ -18531,6 +18651,10 @@
    "2026-11-03",
    "out_of_band"
   ],
+  "UCDFf5ZZxacNzPomCoMLpdeQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCDFivtA1Kc-x-sunmE5y43g": [
    "2026-11-06",
    "out_of_band"
@@ -18621,6 +18745,10 @@
   ],
   "UCDJ3PZnc4BVaCGt5BD6adtQ": [
    "2026-11-11",
+   "out_of_band"
+  ],
+  "UCDJJJFX3Cz9PijFP0-7LSWw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCDJJfbgF2vt472VJMJpzZmQ": [
@@ -18789,6 +18917,10 @@
   ],
   "UCDPWCZBogRzYH7fCVD8zqqw": [
    "2026-11-08",
+   "out_of_band"
+  ],
+  "UCDPtuCQa3jhEYil8Eo-ms1Q": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCDPwwM_J3BnnZYlCUn6iJuw": [
@@ -19393,6 +19525,10 @@
   ],
   "UCDxlyWYHl7Wvu6HT-ZWKpDg": [
    "2026-10-24",
+   "out_of_band"
+  ],
+  "UCDxr-LWctpkNsA6p2Yk9IpQ": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCDy8_X8aL01crt0nMd0XsaA": [
@@ -21103,6 +21239,10 @@
    "2026-11-06",
    "out_of_band"
   ],
+  "UCFKqS0wYGqrBDgah6X-4o-w": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCFKqvZQs2-LWK5N2qL71zow": [
    "2026-11-12",
    "out_of_band"
@@ -21909,6 +22049,10 @@
   ],
   "UCFx8q_Pi87h8BXMD6WMP_Qg": [
    "2026-11-02",
+   "out_of_band"
+  ],
+  "UCFxABp0hbInASfiNOpXYeTQ": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCFxGeJCazJ7xqodsvQhFfGg": [
@@ -23107,6 +23251,10 @@
    "2026-10-27",
    "out_of_band"
   ],
+  "UCGtyAjEUPGrmwoPcXpp8UiA": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCGu-ydjHNguhpnPZXBFRBgw": [
    "2026-10-25",
    "out_of_band"
@@ -23351,6 +23499,10 @@
    "2026-10-27",
    "out_of_band"
   ],
+  "UCH5UfeJlDT393g_N_MD_BXQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCH62TcryrOWmSNCbGqQI3hg": [
    "2026-10-30",
    "out_of_band"
@@ -23467,6 +23619,10 @@
    "2026-11-07",
    "out_of_band"
   ],
+  "UCHBjh-ZXzjaUdPHeFMPUP_Q": [
+   "2026-11-13",
+   "no_contact"
+  ],
   "UCHCBAh2UodUEtvg62kPlu8w": [
    "2026-10-18",
    "out_of_band"
@@ -23505,6 +23661,10 @@
   ],
   "UCHDwD0f_4flr6EalTs9etOw": [
    "2026-10-22",
+   "out_of_band"
+  ],
+  "UCHE8TFJGj4rKFB-sqOKWzcA": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCHEMKKC8wrdShkK-UYYXz7A": [
@@ -24743,6 +24903,10 @@
    "2026-11-07",
    "out_of_band"
   ],
+  "UCI7K3l_4XdMiy9rO7Is9Anw": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCI7QliUfo3be1pgejbyeMvw": [
    "2026-10-30",
    "out_of_band"
@@ -24801,6 +24965,10 @@
   ],
   "UCI9XuB9oJKU0v0hotYEWsDA": [
    "2026-10-25",
+   "out_of_band"
+  ],
+  "UCI9a2iEPk_mApBWI5JpF1xw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCI9f0Yq6Om7Q8HWZdncJ2Ng": [
@@ -25075,6 +25243,10 @@
    "2026-10-20",
    "out_of_band"
   ],
+  "UCIN3KLkYVR7TqKlDM8ouX7Q": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCIN3dNXbcB2iRPv7F5jr_iA": [
    "2026-11-08",
    "out_of_band"
@@ -25261,6 +25433,10 @@
   ],
   "UCIWA2zebwnVTXl6YxbccbjQ": [
    "2026-11-11",
+   "out_of_band"
+  ],
+  "UCIWC72OL73wb9iofuRkYing": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCIWFmac4GafjsZHBt_m9Uhg": [
@@ -25561,6 +25737,10 @@
   ],
   "UCIm58eOPHlX412yopYqvlXw": [
    "2026-10-18",
+   "out_of_band"
+  ],
+  "UCImBtZiKID2N6et71wEGQ3A": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCImFRiy0CVEhphMOkjy_iyw": [
@@ -26203,6 +26383,10 @@
    "2026-10-26",
    "out_of_band"
   ],
+  "UCJDuN6jSIkGUJ9RQo9ynCuQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCJDuX707vOmEpNk-FnYV1_w": [
    "2026-10-18",
    "no_contact"
@@ -26281,6 +26465,10 @@
   ],
   "UCJI-evgSEVjMHu_kDi-Buew": [
    "2026-11-01",
+   "out_of_band"
+  ],
+  "UCJI2rSL4_EdW9Rg1kVR5ILg": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCJIDrw6BYnJtUO0vPvoT9gQ": [
@@ -26501,6 +26689,10 @@
   ],
   "UCJSi7ZqCbHA0136MBn75LEg": [
    "2026-11-04",
+   "out_of_band"
+  ],
+  "UCJSzInE_O_tdwC5-npFA_LA": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCJT4VqjuSjcbl13zKZGEEIQ": [
@@ -27549,6 +27741,10 @@
   ],
   "UCKFxjT5z-2T_4M8N0qfAXmA": [
    "2026-10-17",
+   "out_of_band"
+  ],
+  "UCKGEYiZ7TT19dHHjQw3-n0A": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCKGNVB2moP-zeAWPmw8HvAA": [
@@ -29547,6 +29743,10 @@
    "2026-11-07",
    "out_of_band"
   ],
+  "UCLogkfu4a0BYRkkgbLLlQ8w": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCLow3vQ5hWEMbgjLnXw68kg": [
    "2026-11-08",
    "out_of_band"
@@ -30053,6 +30253,10 @@
   ],
   "UCMGjGn1xoucwG78zqzqKvSQ": [
    "2026-11-04",
+   "out_of_band"
+  ],
+  "UCMGyqJxB0ErzlW-Y9Gvtd3w": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCMH03etwCQClMPuZESIalDw": [
@@ -31615,6 +31819,10 @@
    "2026-11-07",
    "out_of_band"
   ],
+  "UCNWgHP_0lBoB8QqECjZTgoQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCNWmmy5V32eTkJ7F1PPq-KA": [
    "2026-10-26",
    "out_of_band"
@@ -32607,6 +32815,10 @@
    "2026-10-29",
    "out_of_band"
   ],
+  "UCOFwrFTSM2SJz_BPDabgYGQ": [
+   "2026-11-13",
+   "added"
+  ],
   "UCOGmJKrmUh8Hbjjv7GfVZLA": [
    "2026-10-26",
    "out_of_band"
@@ -32705,6 +32917,10 @@
   ],
   "UCONwPjSbBAfPKfE6HkyQyzQ": [
    "2026-10-24",
+   "out_of_band"
+  ],
+  "UCOO2VcApDYYGvokyhQF0_Vw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCOO67sI3yJShaF1aqFyCY1w": [
@@ -32967,6 +33183,10 @@
    "2026-11-01",
    "no_contact"
   ],
+  "UCOa14ep8GUxOkt89ZE_jDow": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCOa6zgAg07RodxHMk40omdA": [
    "2026-11-01",
    "out_of_band"
@@ -33109,6 +33329,10 @@
   ],
   "UCOeyLaUeXvntsEUrT6ni9cA": [
    "2026-10-23",
+   "out_of_band"
+  ],
+  "UCOfDaG-9dxtsC6q85eBR8WQ": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCOfNqSHBQ_3LCWgf-uy0XAw": [
@@ -33605,6 +33829,10 @@
   ],
   "UCP6Tb2KHVHZDuCd2N42XcQw": [
    "2026-10-17",
+   "out_of_band"
+  ],
+  "UCP6awpNE_xPiYa9UpMsCOaA": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCP6gDeEEOVpKgzywJ8pfiRw": [
@@ -34361,6 +34589,10 @@
   ],
   "UCPhab209KEicqPJFAk9IZEA": [
    "2026-10-29",
+   "out_of_band"
+  ],
+  "UCPhgUUqChPmMkU68LokjQXg": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCPhpC0kYGRpnMoY1huAY_kA": [
@@ -35835,6 +36067,10 @@
    "2026-11-06",
    "out_of_band"
   ],
+  "UCQsKtBMpHnbUmtTXCkCEPrg": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCQsW2FSq8YCCPbW8TFe_oFg": [
    "2026-10-24",
    "out_of_band"
@@ -36153,6 +36389,10 @@
   ],
   "UCR6qhsLpn62WVxCBK1dkLow": [
    "2026-11-05",
+   "out_of_band"
+  ],
+  "UCR6zQr18Q_1ywETi8QhLccw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCR77BYqfZTZG_tusffddpnw": [
@@ -36769,6 +37009,10 @@
   ],
   "UCRZmzl0_gHvYuBfmSX0Z1cg": [
    "2026-11-11",
+   "out_of_band"
+  ],
+  "UCRZuh4jYTT7W_G_dBuVEqvQ": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCRZxHV4bcJvHNuSLgKY0gYg": [
@@ -37621,6 +37865,10 @@
   ],
   "UCSGYOdxNA4B7qXrls-C5L5Q": [
    "2026-10-24",
+   "out_of_band"
+  ],
+  "UCSGbAWN2DoBm6hoieABhjIA": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCSHDTQBewfjDtuVut21Y7ug": [
@@ -39467,6 +39715,10 @@
    "2026-11-11",
    "added"
   ],
+  "UCTpb9vZ_xp0_n84lyT-2yqw": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCTpeKNyE_07ZHyQz3-0jmBA": [
    "2026-11-06",
    "out_of_band"
@@ -39723,6 +39975,10 @@
    "2026-10-27",
    "out_of_band"
   ],
+  "UCU102xKJHKaNi_Y61N1J_pQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCU1REXzIdMHukxq1nKbwSZQ": [
    "2026-10-28",
    "out_of_band"
@@ -39839,6 +40095,10 @@
    "2026-10-28",
    "out_of_band"
   ],
+  "UCUASjfcAyPA3YzqhnRvQh6A": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCUB1OOhQ3e8DBecf7hWOyYQ": [
    "2026-11-12",
    "out_of_band"
@@ -39853,6 +40113,10 @@
   ],
   "UCUBQrWva21lWBPy0qzl8cog": [
    "2026-11-09",
+   "out_of_band"
+  ],
+  "UCUBURHFCaCZiaE5h_CE1RAQ": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCUC0NpnK6-VJ1V6NPA2vDaA": [
@@ -40315,6 +40579,10 @@
    "2026-10-26",
    "out_of_band"
   ],
+  "UCUYjnDSc1XL6xjHXPflm25w": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCUYukEVPnuCAvdtimZvCTQw": [
    "2026-10-26",
    "no_contact"
@@ -40525,6 +40793,10 @@
   ],
   "UCUjBaMAzy6g8hCN_Igg7-sA": [
    "2026-10-23",
+   "out_of_band"
+  ],
+  "UCUjN2rb9Cvkz0x8aK-1p-Qw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCUjpAD8Wl2w6Hw5sB6X2l0Q": [
@@ -41307,6 +41579,10 @@
    "2026-11-10",
    "out_of_band"
   ],
+  "UCVNf5dnwyqx9OOATCCYT2WA": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCVOC9EAuRQqnVoBAZ5mE-1Q": [
    "2026-11-03",
    "out_of_band"
@@ -41505,6 +41781,10 @@
   ],
   "UCVZSmT3TA60Y8wsvBA9oulA": [
    "2026-11-10",
+   "out_of_band"
+  ],
+  "UCVZWHn5eL8UKZY3XQ_RGpCw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCVZXq2j3APcDoiyiqGRSAzA": [
@@ -42001,6 +42281,10 @@
   ],
   "UCVwSAFPc8VDyFZ_Vn_9KAwA": [
    "2026-10-23",
+   "out_of_band"
+  ],
+  "UCVwVPoVhxbkx0efWOO_drhw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCVx6vbYYKWH5C1rwIvVaeSA": [
@@ -42815,6 +43099,10 @@
    "2026-10-23",
    "out_of_band"
   ],
+  "UCWZw-Y9gD1ddiKnCsaLkzyg": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCWZxp54GJqPrYE23jMOCx9A": [
    "2026-10-19",
    "out_of_band"
@@ -42901,6 +43189,10 @@
   ],
   "UCWbphS7ru2-vazAoB2tfUcQ": [
    "2026-10-24",
+   "out_of_band"
+  ],
+  "UCWbvaqKOLQ8RS5Nc4XWWdhA": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCWc3uUXe4uUk8wyK6Nj6b4g": [
@@ -43053,6 +43345,10 @@
   ],
   "UCWjkRoczxvOB7eZylh48QYA": [
    "2026-10-25",
+   "out_of_band"
+  ],
+  "UCWjrQWdvZJLZ13Xyxh6pmjw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCWjwnpcTL9rEAChotYT1iRQ": [
@@ -43601,6 +43897,10 @@
   ],
   "UCXAj5fRn5AE__n0tDCJsXTA": [
    "2026-11-08",
+   "out_of_band"
+  ],
+  "UCXArt6ZBL2BqG8SEWXUrzhw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCXB2E1u3jeHCUc58rNx4Oyg": [
@@ -44191,6 +44491,10 @@
    "2026-11-06",
    "out_of_band"
   ],
+  "UCXe2gA_c6igtm2x4WRZZq6Q": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCXeTtypHJpOkNDoUr1bH7Ww": [
    "2026-10-27",
    "out_of_band"
@@ -44699,6 +45003,10 @@
    "2026-10-26",
    "out_of_band"
   ],
+  "UCY7FOhaPxmVZQD4ahQGHlDA": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCY7c5M0DHL2M5LNtNKSqXWw": [
    "2026-10-17",
    "out_of_band"
@@ -44998,6 +45306,10 @@
   "UCYPH7PstdM3xYPDvyYk3CkA": [
    "2026-10-30",
    "no_contact"
+  ],
+  "UCYPJqA98aXtP6ToPR-yRpAg": [
+   "2026-11-13",
+   "out_of_band"
   ],
   "UCYQYIOd1k8LdBlPZnwAJ2YA": [
    "2026-11-09",
@@ -45791,6 +46103,10 @@
    "2026-10-17",
    "out_of_band"
   ],
+  "UCYyJsM-5ZwBLawv2reWQg0g": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCYyMhgXg6mSCyC6DdWu0eSg": [
    "2026-10-23",
    "out_of_band"
@@ -45889,6 +46205,10 @@
   ],
   "UCZ2iMkAdTUuhLJL8oM7YZ6w": [
    "2026-11-08",
+   "out_of_band"
+  ],
+  "UCZ3AmknSJtbzXCeO5a4peoQ": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCZ3BtM0FGoOhKRpibZhE2HQ": [
@@ -46783,6 +47103,10 @@
    "2026-10-26",
    "out_of_band"
   ],
+  "UCZjRxwfyOMXsctsyfrEqsFQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCZjsuhB9SATtFPZOKPvJwEA": [
    "2026-10-28",
    "out_of_band"
@@ -47047,6 +47371,10 @@
    "2026-10-24",
    "out_of_band"
   ],
+  "UCZwZbHCZLkyjJOOKaaK1RYA": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCZwiCzMIXwNk9cIO-TfGuuA": [
    "2026-10-29",
    "out_of_band"
@@ -47087,6 +47415,10 @@
    "2026-11-05",
    "out_of_band"
   ],
+  "UCZz1zKlCE9Fykr6Zz8oPT9w": [
+   "2026-11-13",
+   "no_contact"
+  ],
   "UCZzNoqtx9-FxylO7aLW87yg": [
    "2026-11-09",
    "out_of_band"
@@ -47121,6 +47453,10 @@
   ],
   "UC_-vjGWq4Ab4AQlIh8dbpYg": [
    "2026-11-11",
+   "out_of_band"
+  ],
+  "UC_0-65q8--3WA0eWT-ioMLQ": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UC_0CVCfC_3iuHqmyClu59Uw": [
@@ -47271,6 +47607,10 @@
    "2026-10-24",
    "out_of_band"
   ],
+  "UC_5rEJUEnrGQIE2v4ctLUSw": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UC_5rg4zGvFhOnoRLQ36MRQw": [
    "2026-10-18",
    "out_of_band"
@@ -47294,6 +47634,10 @@
   "UC_7Tq7Gfg2kOnrJ9o_-3CPw": [
    "2026-11-07",
    "no_contact"
+  ],
+  "UC_7WVYXAd9EqkdVO3ut_xcg": [
+   "2026-11-13",
+   "out_of_band"
   ],
   "UC_7dJzJtYeJXrlXNl1cnhCg": [
    "2026-11-11",
@@ -48026,6 +48370,10 @@
   "UC_ktoEePM5sCZY149M1nb3A": [
    "2026-11-06",
    "added"
+  ],
+  "UC_lH0bN5LfV35g2ZkjNJe5Q": [
+   "2026-11-13",
+   "no_contact"
   ],
   "UC_lgri5yS9aCwT2ySLo9o5A": [
    "2026-11-04",
@@ -49615,6 +49963,10 @@
    "2026-10-22",
    "out_of_band"
   ],
+  "UCb1iQ_mlC4511dyc63tK6kQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCb1pbWpcwycYeuGuUdVf_kw": [
    "2026-10-30",
    "no_contact"
@@ -49777,6 +50129,10 @@
   ],
   "UCbBcG48GDv9-cGGttDOu2-g": [
    "2026-10-24",
+   "out_of_band"
+  ],
+  "UCbBjOhJh1-dZM8Od9eT_HNg": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCbBmcRuLaYvf1JZSlSB_fpg": [
@@ -51197,6 +51553,10 @@
   ],
   "UCcIKDdClybN7AWT4OHcMWzQ": [
    "2026-11-01",
+   "out_of_band"
+  ],
+  "UCcIMRCEN6MmHs-EocG_JV8A": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCcIbcuDuICLkzZNXL2MlxMw": [
@@ -52691,6 +53051,10 @@
    "2026-10-29",
    "out_of_band"
   ],
+  "UCdU-FUrgZ3TcUpNTHxXgb8Q": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCdU-KnA2230cHBSe9gOVi5Q": [
    "2026-10-25",
    "out_of_band"
@@ -52741,6 +53105,10 @@
   ],
   "UCdXKq9KzIqXSg6v3W6Ho5og": [
    "2026-10-27",
+   "out_of_band"
+  ],
+  "UCdXTmTMco62biogSXK10FGg": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCdXZ4MqaDruWKxeFvIOPssg": [
@@ -53259,6 +53627,10 @@
    "2026-10-18",
    "out_of_band"
   ],
+  "UCdvWEkgpmxzsbfZbnkPM8gQ": [
+   "2026-11-13",
+   "no_contact"
+  ],
   "UCdvZV3_6uTI30hXaNZ5fE8g": [
    "2026-11-09",
    "out_of_band"
@@ -53359,12 +53731,20 @@
    "2026-10-25",
    "out_of_band"
   ],
+  "UCe0MPv2P_NCQ-oNX9mNyEGw": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCe0NQS9dH64udngjQ5nAErA": [
    "2026-10-24",
    "out_of_band"
   ],
   "UCe0r2gEJaLo4RXq0KYWLYDg": [
    "2026-11-04",
+   "out_of_band"
+  ],
+  "UCe0xJZ3N0o1x3oohbc63S6A": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCe1-vyjQIXXOU1j9edGr4NQ": [
@@ -53715,8 +54095,16 @@
    "2026-10-29",
    "out_of_band"
   ],
+  "UCeJrNG2hNE-W4N6CueIFyLQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCeJsinbycRp2V_4XOioNOUw": [
    "2026-11-10",
+   "out_of_band"
+  ],
+  "UCeK93fwNctJtWskXqpax2gQ": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCeKGxWrZFogVFdW6mHL9h6A": [
@@ -53725,6 +54113,10 @@
   ],
   "UCeKHErLnxR-3Akp0P0uzvlg": [
    "2026-11-08",
+   "out_of_band"
+  ],
+  "UCeKJR_mTJwCMhxoiAIGoqbw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCeKPJ7M9_JQYORfp0rMvN-g": [
@@ -53913,6 +54305,10 @@
   ],
   "UCeSXmNV0OQNrt_VHPvkXV4w": [
    "2026-10-23",
+   "out_of_band"
+  ],
+  "UCeSct1TwgMTmm4zFQne5G5A": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCeSuJOU1L3Yh5DlVene_qIA": [
@@ -54351,6 +54747,10 @@
    "2026-10-28",
    "out_of_band"
   ],
+  "UCepJL2njMOJhNaem8wuMfvQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCepTiGyTVBabXg2RMk4FJmA": [
    "2026-11-01",
    "out_of_band"
@@ -54695,6 +55095,10 @@
    "2026-11-10",
    "out_of_band"
   ],
+  "UCf6SOPsHz29_swSgaa2l8ag": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCf6Vn12-BVouDq35Ql7N2kA": [
    "2026-11-03",
    "no_contact"
@@ -54797,6 +55201,10 @@
   ],
   "UCfAU8HFa2sufHGlUj0X6qvg": [
    "2026-10-18",
+   "out_of_band"
+  ],
+  "UCfAj-9IzvW5cRBmm7-Ku4tg": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCfAsNhQ5laGJ-UuC0J-_Q9w": [
@@ -56311,6 +56719,10 @@
    "2026-11-03",
    "out_of_band"
   ],
+  "UCgMk7Baw2VDqPWhn-L98l5w": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCgMnp8Fs5JGL2xEov4pf5CQ": [
    "2026-10-18",
    "no_contact"
@@ -56729,6 +57141,10 @@
   ],
   "UCgh94gwa56pKZ1ymt6yYfFg": [
    "2026-11-11",
+   "out_of_band"
+  ],
+  "UCgh9hwxanKCnScdDzqhxg1Q": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCghYO-dT54x607oYG12m0NQ": [
@@ -57471,6 +57887,10 @@
    "2026-11-11",
    "out_of_band"
   ],
+  "UChFp12N7mBJtUw68GuoxITw": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UChFyKkbggesq0xPbHVCm-zg": [
    "2026-11-10",
    "out_of_band"
@@ -58161,6 +58581,10 @@
   ],
   "UChpRPsAeSZn5DistGacR3iA": [
    "2026-10-26",
+   "out_of_band"
+  ],
+  "UChpbbY6n3EZ3EwCASHX_CIw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UChpgKRtNmvcLOc5MSqVEr-A": [
@@ -58965,6 +59389,10 @@
   ],
   "UCiSz3_hO9tUJYBLlmJL0UEw": [
    "2026-10-25",
+   "out_of_band"
+  ],
+  "UCiSzsiu3RIsApMkMY10C3Sg": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCiTCG_5BbZ0mU_rVMvBAlzw": [
@@ -59835,6 +60263,10 @@
    "2026-11-10",
    "out_of_band"
   ],
+  "UCjA32yS-0MRpQlKc45nvlCA": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCjADKvVBuR-D5SMGcm2wVUQ": [
    "2026-11-05",
    "out_of_band"
@@ -60503,6 +60935,10 @@
    "2026-10-30",
    "out_of_band"
   ],
+  "UCjexTPeQMiM7v3vqjnU0MmQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCjexqFljHg3miuOYIIJP-Lw": [
    "2026-10-22",
    "out_of_band"
@@ -60657,6 +61093,10 @@
   ],
   "UCjlUJISy-VGZmny_kiEiW7Q": [
    "2026-11-10",
+   "out_of_band"
+  ],
+  "UCjlj_5BbpSX0cIvlrJajwxQ": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCjlnckWqPbWKCMUf2Ek1RaA": [
@@ -60985,6 +61425,10 @@
   ],
   "UCk4BwgEF2Ar_X06HXtluHlQ": [
    "2026-10-31",
+   "out_of_band"
+  ],
+  "UCk4ZX1EQ8p5Wz1b8SD9zmNQ": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCk4a64q-dn1eQjgFiNnXADA": [
@@ -61775,6 +62219,10 @@
    "2026-11-03",
    "out_of_band"
   ],
+  "UCkf2urLJoLVnjVqaPQYH_hw": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCkfJLu2R7khoKirDaHfuGHQ": [
    "2026-10-26",
    "out_of_band"
@@ -62161,6 +62609,10 @@
   ],
   "UCl-uyL4K9pxuzZRhFw71CHg": [
    "2026-10-25",
+   "out_of_band"
+  ],
+  "UCl02EXx-2BEibtGX70K3oFA": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCl0Bpn_v8Jg_EAMFdPMHUKA": [
@@ -63759,6 +64211,10 @@
    "2026-11-07",
    "out_of_band"
   ],
+  "UCmJBub4kGHDyoG3TAVSh-XA": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCmJfiUVMyR8RFK0_WPIdXoA": [
    "2026-10-27",
    "out_of_band"
@@ -65223,6 +65679,10 @@
    "2026-10-26",
    "out_of_band"
   ],
+  "UCnRsvqQ_DGrgo1USLazPtog": [
+   "2026-11-13",
+   "no_contact"
+  ],
   "UCnRyk9bhFmzSigy18pqH9dA": [
    "2026-10-26",
    "no_contact"
@@ -65811,6 +66271,10 @@
    "2026-11-02",
    "out_of_band"
   ],
+  "UCntOqu7wOdvTbZt5Ofv8DQQ": [
+   "2026-11-13",
+   "no_contact"
+  ],
   "UCntnNj_IIaubD6V9K8N4i2Q": [
    "2026-10-31",
    "out_of_band"
@@ -65874,6 +66338,10 @@
   "UCnwNtlgwTboj9fiKPXUAfnQ": [
    "2026-10-20",
    "no_contact"
+  ],
+  "UCnwRC5bWSMCWpO5qKNg09aw": [
+   "2026-11-13",
+   "out_of_band"
   ],
   "UCnwZZHboukKCsMSXYUVRCwA": [
    "2026-10-27",
@@ -66077,6 +66545,10 @@
   ],
   "UCo4k7uMo-JgnNaP3TbKT2Zw": [
    "2026-10-18",
+   "out_of_band"
+  ],
+  "UCo4qzyyUaC0VGcgKq6J0Tiw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCo59nOv-7R84waJ7phpwdUQ": [
@@ -66341,6 +66813,10 @@
   ],
   "UCoLCFDH6jsvqZ55mkDyGGKw": [
    "2026-10-21",
+   "out_of_band"
+  ],
+  "UCoM1F1wf9YEoi9GcDjiiSZg": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCoM2PCpirJuxL4VgYmHOihw": [
@@ -66935,6 +67411,10 @@
    "2026-11-03",
    "out_of_band"
   ],
+  "UCotid-7v3B7nOyhoDOAzHaA": [
+   "2026-11-13",
+   "no_contact"
+  ],
   "UCotyp_JcStQyRmCArALZ1wQ": [
    "2026-11-11",
    "out_of_band"
@@ -67298,6 +67778,10 @@
   "UCp8MXoH5jyNVxNw6-s23xDw": [
    "2026-11-11",
    "no_contact"
+  ],
+  "UCp8uLBKhBEx4uSZYmN049Mw": [
+   "2026-11-13",
+   "out_of_band"
   ],
   "UCp8vLjhwtxfld34f6Qtz20w": [
    "2026-11-08",
@@ -67801,6 +68285,10 @@
   ],
   "UCp_RI_TOnvbIwIVWN6Uat3w": [
    "2026-10-23",
+   "out_of_band"
+  ],
+  "UCp_Vk1l0OHPnJOjMGz9MiKQ": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCpa3Zrp5OM2kayimQnv2EfA": [
@@ -69503,6 +69991,10 @@
    "2026-10-25",
    "out_of_band"
   ],
+  "UCqw9lgxPk8icN4mymIpC51Q": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCqwb69jPwmkvJ7Ti7Vmn-4w": [
    "2026-11-02",
    "out_of_band"
@@ -69714,6 +70206,10 @@
   "UCr80SR0I6zsgnr1q-7m0v4w": [
    "2026-10-31",
    "no_contact"
+  ],
+  "UCr8Dp9wQBw4bxQnLIqY2pag": [
+   "2026-11-13",
+   "out_of_band"
   ],
   "UCr8JbHJ1t5idTOV7x0Vm0bw": [
    "2026-10-18",
@@ -70503,6 +70999,10 @@
    "2026-10-19",
    "out_of_band"
   ],
+  "UCrkQ_Yy9oJ4qkP5RqrtugJw": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCrkYtgCQulRy4OlaRGjyXkQ": [
    "2026-10-25",
    "out_of_band"
@@ -70731,6 +71231,10 @@
    "2026-10-20",
    "out_of_band"
   ],
+  "UCruKyHSWwMIP_NOiAPNQaGQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCruUBuRJ_ymH6YBk9dWhAuQ": [
    "2026-10-24",
    "out_of_band"
@@ -70857,6 +71361,10 @@
   ],
   "UCs3VuCPKI2efyKoIAph7xcA": [
    "2026-11-10",
+   "out_of_band"
+  ],
+  "UCs3Z7Lej6nEG62fDQ8zwOjw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCs3oqebs7jaY77XWNess5eQ": [
@@ -71867,6 +72375,10 @@
    "2026-10-22",
    "out_of_band"
   ],
+  "UCsqemlHjSy5a--jIXy-gvTA": [
+   "2026-11-13",
+   "no_contact"
+  ],
   "UCsr1Fb6SHV-WFO-8PXv7QmQ": [
    "2026-10-20",
    "out_of_band"
@@ -71957,6 +72469,10 @@
   ],
   "UCsvGgkMHKZb_co7EZMNyPjg": [
    "2026-11-12",
+   "out_of_band"
+  ],
+  "UCsvS2Z5YyTCY77rJotL5-2g": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCsvUNuwXJEilPoDiiZ-t20g": [
@@ -72803,6 +73319,10 @@
    "2026-11-05",
    "out_of_band"
   ],
+  "UCtYNIIrw0EY3GoNTG0EU9tA": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCtYUsYnbN5o6nRW_sq61PYw": [
    "2026-10-31",
    "out_of_band"
@@ -72835,6 +73355,10 @@
    "2026-10-25",
    "no_contact"
   ],
+  "UCt_Y4robbI-Ouz2D1nCxGSg": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCt_mma-lKzTxpcBSPH19HqQ": [
    "2026-11-01",
    "out_of_band"
@@ -72845,6 +73369,10 @@
   ],
   "UCt_pmSO8Xg1Uq3drnJ6_N1Q": [
    "2026-10-18",
+   "out_of_band"
+  ],
+  "UCta7lAVbq9NEvnCIgSzCB_A": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCtaT__OvsL2zwdvuLlVsKfA": [
@@ -73253,6 +73781,10 @@
   ],
   "UCtu2BCnJoFGRBOuIh570QWw": [
    "2026-10-31",
+   "out_of_band"
+  ],
+  "UCtu8cQFJzQOzZDWL9W7Z7lA": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCtuLh2X7RcOXCHIfw6gP95g": [
@@ -75139,6 +75671,10 @@
    "2026-11-11",
    "out_of_band"
   ],
+  "UCvIRn092U61MV4wKaeaFxQg": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCvIWBOfYGXYQQQORhjAJKCQ": [
    "2026-10-27",
    "out_of_band"
@@ -75747,6 +76283,10 @@
    "2026-11-09",
    "out_of_band"
   ],
+  "UCvpSLV7JgHOSxzptPbnd_Gw": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCvpXYdcrktt2J1bfdJMqPxg": [
    "2026-11-11",
    "out_of_band"
@@ -75867,6 +76407,10 @@
    "2026-10-21",
    "out_of_band"
   ],
+  "UCvuhkfQa3FhYNC8RXqW1YWg": [
+   "2026-11-13",
+   "no_contact"
+  ],
   "UCvuiseN8iC113-sMXn_mE1A": [
    "2026-10-19",
    "out_of_band"
@@ -75905,6 +76449,10 @@
   ],
   "UCvw_3D9DaavXB3lRltpyNxg": [
    "2026-11-08",
+   "out_of_band"
+  ],
+  "UCvwhWr5E5Vp_BGxXdnlTWHw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCvwkXtA1Vu8kkJPUMUcYgKw": [
@@ -76571,6 +77119,10 @@
    "2026-11-06",
    "no_contact"
   ],
+  "UCwQiPWa6vvGZxNYUFVklzqA": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCwQlTxdk5CpCgFPQSA0IW_Q": [
    "2026-10-30",
    "no_contact"
@@ -76922,6 +77474,10 @@
   "UCwfYPej9dFfRmxX0XN-HWfQ": [
    "2026-10-28",
    "out_of_band"
+  ],
+  "UCwfZNjDAw1xU1OrS78EQVeQ": [
+   "2026-11-13",
+   "no_contact"
   ],
   "UCwfZUo7VjH-crLZlKASR__g": [
    "2026-11-08",
@@ -77291,6 +77847,10 @@
    "2026-11-05",
    "out_of_band"
   ],
+  "UCwxSiGTe_oUGOBnMG4L3LrQ": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCwxXFDSg-yTK942eQOCmjKw": [
    "2026-11-04",
    "no_contact"
@@ -77475,6 +78035,10 @@
    "2026-10-26",
    "out_of_band"
   ],
+  "UCx6N5f1IxmOCJBSz3gz6ZGg": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCx6SJ-EWSTZM0Vgxk5HTjWg": [
    "2026-10-18",
    "out_of_band"
@@ -77509,6 +78073,10 @@
   ],
   "UCx7lk1Hpc48S_1K4MKyMr1g": [
    "2026-11-08",
+   "out_of_band"
+  ],
+  "UCx8SloopkSpg23q21VYHXHw": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCx8YqGduw6f5OgZ2hpOAY0A": [
@@ -78911,6 +79479,10 @@
    "2026-10-24",
    "no_contact"
   ],
+  "UCyHyysGMeNi31cM2hmS7egg": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCyIRhsLWlhZ92HATHGJkfVQ": [
    "2026-10-18",
    "out_of_band"
@@ -79095,6 +79667,10 @@
    "2026-11-09",
    "out_of_band"
   ],
+  "UCyQAgUPZYikbShxSTXzBHtg": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCyQXN8Ke2T-WrW05LYRcjeg": [
    "2026-10-22",
    "out_of_band"
@@ -79247,6 +79823,10 @@
    "2026-10-18",
    "out_of_band"
   ],
+  "UCyYpUbPPyVW7rCl_IVvwfOg": [
+   "2026-11-13",
+   "out_of_band"
+  ],
   "UCyYune5q04IhojDDLSjzOJA": [
    "2026-10-25",
    "out_of_band"
@@ -79309,6 +79889,10 @@
   ],
   "UCybiCY9BvB79TFV8JlL2zgg": [
    "2026-10-22",
+   "out_of_band"
+  ],
+  "UCybj3e5lQinX0wuvChg1-9Q": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCybkp56W3rSaO2DkILiwU-w": [
@@ -79509,6 +80093,10 @@
   ],
   "UCykXKdaz9O4OjOOsEyMcicw": [
    "2026-10-31",
+   "out_of_band"
+  ],
+  "UCykderuqJKwXblI0j9WsuhA": [
+   "2026-11-13",
    "out_of_band"
   ],
   "UCykfh1pc6v_dvV_qE8qN9FA": [
@@ -79926,6 +80514,10 @@
   "UCz1JNF4ytfIDM9pT_Tx-vJA": [
    "2026-10-20",
    "added"
+  ],
+  "UCz1d7bu0MJCTopS966TDHUw": [
+   "2026-11-13",
+   "no_contact"
   ],
   "UCz1kmIWwivJV0Qi7rhRHw9w": [
    "2026-10-26",
@@ -81176,10 +81768,15 @@
    "out_of_band"
   ]
  },
- "slot_pages": {},
+ "slot_pages": {
+  "Gaming|roblox|medium|relevance": {
+   "pages": 1,
+   "token": "CDIQAA"
+  }
+ },
  "window": {
-  "published_after": "2026-09-28T21:12:17Z",
-  "published_before": "2026-10-28T21:12:17Z",
-  "started": "2026-10-28"
+  "published_after": "2026-10-14T00:35:44Z",
+  "published_before": "2026-11-13T00:35:44Z",
+  "started": "2026-11-13"
  }
 }
